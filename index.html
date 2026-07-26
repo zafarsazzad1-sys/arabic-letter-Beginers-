@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arabic Letter Playground</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <h1>✨ Arabic Letter Playground ✨</h1>
+  <p class="subtitle">Tap a letter to hear it, learn a word, and trace it!</p>
+</header>
+
+<main>
+  <div id="letter-grid" class="letter-grid"></div>
+</main>
+
+<div id="overlay" class="overlay hidden">
+  <div class="detail-card">
+    <button id="close-btn" class="close-btn" aria-label="Close">✕</button>
+
+    <div class="detail-top">
+      <div class="big-letter" id="big-letter">ا</div>
+      <div class="detail-info">
+        <div class="letter-name" id="letter-name">Alif</div>
+        <div class="letter-translit" id="letter-translit">a</div>
+        <button id="hear-btn" class="hear-btn">🔊 Hear it</button>
+      </div>
+    </div>
+
+    <div class="example-word">
+      <div class="example-arabic" id="example-arabic">أسد</div>
+      <div class="example-meaning">
+        <span id="example-translit">Asad</span> — <span id="example-meaning">Lion</span> 🦁
+      </div>
+      <button id="hear-word-btn" class="hear-btn small">🔊 Hear the word</button>
+    </div>
+
+    <div class="trace-section">
+      <p class="trace-label">Trace the letter!</p>
+      <canvas id="trace-canvas" width="280" height="280"></canvas>
+      <div class="trace-buttons">
+        <button id="clear-trace-btn">Clear</button>
+        <button id="done-trace-btn">I'm done! 🎉</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
