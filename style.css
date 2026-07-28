@@ -34,6 +34,38 @@ body {
   font-size: 15px;
 }
 
+.mode-btn {
+  margin-top: 14px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.game-panel {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px 8px;
+  text-align: center;
+}
+
+.game-panel.hidden { display: none; }
+
+.game-prompt {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.game-score {
+  margin-top: 4px;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
 main {
   max-width: 900px;
   margin: 0 auto;
@@ -68,6 +100,26 @@ main {
 .letter-btn:active {
   transform: translateY(1px);
   box-shadow: 0 1px 0 rgba(0,0,0,0.12);
+}
+
+.letter-btn.correct-flash {
+  animation: correct-pulse 0.6s ease;
+}
+
+.letter-btn.wrong-flash {
+  animation: wrong-shake 0.4s ease;
+}
+
+@keyframes correct-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(46, 158, 79, 0.7); }
+  50% { transform: scale(1.15); box-shadow: 0 0 0 10px rgba(46, 158, 79, 0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes wrong-shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
 }
 
 .overlay {

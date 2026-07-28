@@ -4,14 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arabic Letter Playground</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
 <header class="app-header">
   <h1>✨ Arabic Letter Playground ✨</h1>
   <p class="subtitle">Tap a letter to hear it, learn a word, and trace it!</p>
+  <button id="mode-toggle-btn" class="mode-btn">🎮 Play Find-the-Letter</button>
 </header>
+
+<div id="game-panel" class="game-panel hidden">
+  <div class="game-prompt">Find: <span id="game-target-name">Alif</span></div>
+  <div class="game-score">Score: <span id="game-score">0</span></div>
+</div>
 
 <main>
   <div id="letter-grid" class="letter-grid"></div>
@@ -33,7 +39,7 @@
     <div class="example-word">
       <div class="example-arabic" id="example-arabic">أسد</div>
       <div class="example-meaning">
-        <span id="example-translit">Asad</span> — <span id="example-meaning">Lion</span> 🦁
+        <span id="example-translit">Asad</span> — <span id="example-meaning">Lion</span> <span id="example-emoji">🦁</span>
       </div>
       <button id="hear-word-btn" class="hear-btn small">🔊 Hear the word</button>
     </div>
@@ -51,6 +57,6 @@
 
 <div id="confetti-container" class="confetti-container"></div>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>

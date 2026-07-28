@@ -1,32 +1,32 @@
 const LETTERS = [
-  { letter: 'ا', name: 'Alif', translit: 'a', word: 'أسد', wordTranslit: 'Asad', meaning: 'Lion' },
-  { letter: 'ب', name: 'Ba', translit: 'b', word: 'باب', wordTranslit: 'Baab', meaning: 'Door' },
-  { letter: 'ت', name: 'Ta', translit: 't', word: 'تفاح', wordTranslit: 'Tuffah', meaning: 'Apple' },
-  { letter: 'ث', name: 'Tha', translit: 'th', word: 'ثعلب', wordTranslit: "Tha'lab", meaning: 'Fox' },
-  { letter: 'ج', name: 'Jeem', translit: 'j', word: 'جمل', wordTranslit: 'Jamal', meaning: 'Camel' },
-  { letter: 'ح', name: 'Haa', translit: 'h', word: 'حصان', wordTranslit: 'Hisan', meaning: 'Horse' },
-  { letter: 'خ', name: 'Khaa', translit: 'kh', word: 'خروف', wordTranslit: 'Kharoof', meaning: 'Sheep' },
-  { letter: 'د', name: 'Dal', translit: 'd', word: 'ديك', wordTranslit: 'Deek', meaning: 'Rooster' },
-  { letter: 'ذ', name: 'Dhal', translit: 'dh', word: 'ذئب', wordTranslit: "Thi'b", meaning: 'Wolf' },
-  { letter: 'ر', name: 'Ra', translit: 'r', word: 'رمان', wordTranslit: 'Rumman', meaning: 'Pomegranate' },
-  { letter: 'ز', name: 'Zaah', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe' },
-  { letter: 'س', name: 'Seen', translit: 's', word: 'سمك', wordTranslit: 'Samak', meaning: 'Fish' },
-  { letter: 'ش', name: 'Sheen', translit: 'sh', word: 'شمس', wordTranslit: 'Shams', meaning: 'Sun' },
-  { letter: 'ص', name: 'Sad', translit: 's', word: 'صقر', wordTranslit: 'Saqr', meaning: 'Falcon' },
-  { letter: 'ض', name: 'Dad', translit: 'd', word: 'ضفدع', wordTranslit: "Difda'", meaning: 'Frog' },
-  { letter: 'ط', name: 'Ta (heavy)', translit: 't', word: 'طائر', wordTranslit: "Ta'ir", meaning: 'Bird' },
-  { letter: 'ظ', name: 'Za', translit: 'z', word: 'ظرف', wordTranslit: 'Tharf', meaning: 'Envelope' },
-  { letter: 'ع', name: 'Ayn', translit: "'", word: 'عين', wordTranslit: 'Ayn', meaning: 'Eye' },
-  { letter: 'غ', name: 'Ghayn', translit: 'gh', word: 'غزال', wordTranslit: 'Ghazal', meaning: 'Gazelle' },
-  { letter: 'ف', name: 'Fa', translit: 'f', word: 'فيل', wordTranslit: 'Feel', meaning: 'Elephant' },
-  { letter: 'ق', name: 'Qaf', translit: 'q', word: 'قلم', wordTranslit: 'Qalam', meaning: 'Pen' },
-  { letter: 'ك', name: 'Kaf', translit: 'k', word: 'كتاب', wordTranslit: 'Kitab', meaning: 'Book' },
-  { letter: 'ل', name: 'Lam', translit: 'l', word: 'ليمون', wordTranslit: 'Laymoon', meaning: 'Lemon' },
-  { letter: 'م', name: 'Meem', translit: 'm', word: 'موز', wordTranslit: 'Mawz', meaning: 'Banana' },
-  { letter: 'ن', name: 'Noon', translit: 'n', word: 'نجمة', wordTranslit: 'Najma', meaning: 'Star' },
-  { letter: 'ه', name: 'Ha', translit: 'h', word: 'هلال', wordTranslit: 'Hilal', meaning: 'Crescent' },
-  { letter: 'و', name: 'Wao', translit: 'w', word: 'وردة', wordTranslit: 'Warda', meaning: 'Rose' },
-  { letter: 'ي', name: 'Ya', translit: 'y', word: 'يد', wordTranslit: 'Yad', meaning: 'Hand' },
+  { letter: 'ا', name: 'Alif', translit: 'a', word: 'أسد', wordTranslit: 'Asad', meaning: 'Lion', emoji: '🦁' },
+  { letter: 'ب', name: 'Ba', translit: 'b', word: 'باب', wordTranslit: 'Baab', meaning: 'Door', emoji: '🚪' },
+  { letter: 'ت', name: 'Ta', translit: 't', word: 'تفاح', wordTranslit: 'Tuffah', meaning: 'Apple', emoji: '🍎' },
+  { letter: 'ث', name: 'Tha', translit: 'th', word: 'ثعلب', wordTranslit: "Tha'lab", meaning: 'Fox', emoji: '🦊' },
+  { letter: 'ج', name: 'Jeem', translit: 'j', word: 'جمل', wordTranslit: 'Jamal', meaning: 'Camel', emoji: '🐫' },
+  { letter: 'ح', name: 'Haa', translit: 'h', word: 'حصان', wordTranslit: 'Hisan', meaning: 'Horse', emoji: '🐴' },
+  { letter: 'خ', name: 'Khaa', translit: 'kh', word: 'خروف', wordTranslit: 'Kharoof', meaning: 'Sheep', emoji: '🐑' },
+  { letter: 'د', name: 'Dal', translit: 'd', word: 'ديك', wordTranslit: 'Deek', meaning: 'Rooster', emoji: '🐓' },
+  { letter: 'ذ', name: 'Dhal', translit: 'dh', word: 'ذئب', wordTranslit: "Thi'b", meaning: 'Wolf', emoji: '🐺' },
+  { letter: 'ر', name: 'Ra', translit: 'r', word: 'رمان', wordTranslit: 'Rumman', meaning: 'Pomegranate', emoji: '🔴' },
+  { letter: 'ز', name: 'Zaah', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe', emoji: '🦒' },
+  { letter: 'س', name: 'Seen', translit: 's', word: 'سمك', wordTranslit: 'Samak', meaning: 'Fish', emoji: '🐟' },
+  { letter: 'ش', name: 'Sheen', translit: 'sh', word: 'شمس', wordTranslit: 'Shams', meaning: 'Sun', emoji: '☀️' },
+  { letter: 'ص', name: 'Sad', translit: 's', word: 'صقر', wordTranslit: 'Saqr', meaning: 'Falcon', emoji: '🦅' },
+  { letter: 'ض', name: 'Dad', translit: 'd', word: 'ضفدع', wordTranslit: "Difda'", meaning: 'Frog', emoji: '🐸' },
+  { letter: 'ط', name: 'Ta (heavy)', translit: 't', word: 'طائر', wordTranslit: "Ta'ir", meaning: 'Bird', emoji: '🐦' },
+  { letter: 'ظ', name: 'Za', translit: 'z', word: 'ظرف', wordTranslit: 'Tharf', meaning: 'Envelope', emoji: '✉️' },
+  { letter: 'ع', name: 'Ayn', translit: "'", word: 'عين', wordTranslit: 'Ayn', meaning: 'Eye', emoji: '👁️' },
+  { letter: 'غ', name: 'Ghayn', translit: 'gh', word: 'غزال', wordTranslit: 'Ghazal', meaning: 'Gazelle', emoji: '🦌' },
+  { letter: 'ف', name: 'Fa', translit: 'f', word: 'فيل', wordTranslit: 'Feel', meaning: 'Elephant', emoji: '🐘' },
+  { letter: 'ق', name: 'Qaf', translit: 'q', word: 'قلم', wordTranslit: 'Qalam', meaning: 'Pen', emoji: '🖊️' },
+  { letter: 'ك', name: 'Kaf', translit: 'k', word: 'كتاب', wordTranslit: 'Kitab', meaning: 'Book', emoji: '📖' },
+  { letter: 'ل', name: 'Lam', translit: 'l', word: 'ليمون', wordTranslit: 'Laymoon', meaning: 'Lemon', emoji: '🍋' },
+  { letter: 'م', name: 'Meem', translit: 'm', word: 'موز', wordTranslit: 'Mawz', meaning: 'Banana', emoji: '🍌' },
+  { letter: 'ن', name: 'Noon', translit: 'n', word: 'نجمة', wordTranslit: 'Najma', meaning: 'Star', emoji: '⭐' },
+  { letter: 'ه', name: 'Ha', translit: 'h', word: 'هلال', wordTranslit: 'Hilal', meaning: 'Crescent', emoji: '🌙' },
+  { letter: 'و', name: 'Wao', translit: 'w', word: 'وردة', wordTranslit: 'Warda', meaning: 'Rose', emoji: '🌹' },
+  { letter: 'ي', name: 'Ya', translit: 'y', word: 'يد', wordTranslit: 'Yad', meaning: 'Hand', emoji: '✋' },
 ];
 
 const COLORS = ['#f582ae', '#8bd3dd', '#f3a712', '#a2d729', '#7f7ffe', '#ff6b6b', '#39a0ed'];
@@ -42,24 +42,86 @@ const hearBtn = document.getElementById('hear-btn');
 const exampleArabic = document.getElementById('example-arabic');
 const exampleTranslit = document.getElementById('example-translit');
 const exampleMeaning = document.getElementById('example-meaning');
+const exampleEmoji = document.getElementById('example-emoji');
 const hearWordBtn = document.getElementById('hear-word-btn');
 const canvas = document.getElementById('trace-canvas');
 const ctx = canvas.getContext('2d');
 const clearTraceBtn = document.getElementById('clear-trace-btn');
 const doneTraceBtn = document.getElementById('done-trace-btn');
 const confettiContainer = document.getElementById('confetti-container');
+const modeToggleBtn = document.getElementById('mode-toggle-btn');
+const gamePanel = document.getElementById('game-panel');
+const gameTargetNameEl = document.getElementById('game-target-name');
+const gameScoreEl = document.getElementById('game-score');
 
 let currentEntry = null;
+let gameMode = false;
+let gameScore = 0;
+let gameTarget = null;
+
+function shuffleArray(arr) {
+  const shuffled = arr.slice();
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
 
 function renderGrid() {
-  LETTERS.forEach((entry, i) => {
+  const shuffledLetters = shuffleArray(LETTERS);
+  shuffledLetters.forEach((entry, i) => {
     const btn = document.createElement('button');
     btn.className = 'letter-btn';
     btn.textContent = entry.letter;
     btn.style.background = COLORS[i % COLORS.length];
-    btn.addEventListener('click', () => openDetail(entry));
+    btn.addEventListener('click', () => {
+      if (gameMode) {
+        handleGameGuess(entry, btn);
+      } else {
+        openDetail(entry);
+      }
+    });
     grid.appendChild(btn);
   });
+}
+
+function startGameRound() {
+  let next = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+  if (gameTarget) {
+    while (next.letter === gameTarget.letter) {
+      next = LETTERS[Math.floor(Math.random() * LETTERS.length)];
+    }
+  }
+  gameTarget = next;
+  gameTargetNameEl.textContent = gameTarget.name;
+}
+
+function handleGameGuess(entry, btn) {
+  if (entry.letter === gameTarget.letter) {
+    btn.classList.add('correct-flash');
+    gameScore++;
+    gameScoreEl.textContent = gameScore;
+    setTimeout(() => {
+      btn.classList.remove('correct-flash');
+      startGameRound();
+    }, 500);
+  } else {
+    btn.classList.add('wrong-flash');
+    setTimeout(() => btn.classList.remove('wrong-flash'), 400);
+  }
+}
+
+function setGameMode(on) {
+  gameMode = on;
+  gamePanel.classList.toggle('hidden', !gameMode);
+  modeToggleBtn.textContent = gameMode ? '📖 Back to Learning' : '🎮 Play Find-the-Letter';
+  if (gameMode) {
+    gameScore = 0;
+    gameScoreEl.textContent = gameScore;
+    gameTarget = null;
+    startGameRound();
+  }
 }
 
 function speak(text) {
@@ -93,6 +155,7 @@ function openDetail(entry) {
   exampleArabic.textContent = entry.word;
   exampleTranslit.textContent = entry.wordTranslit;
   exampleMeaning.textContent = entry.meaning;
+  exampleEmoji.textContent = entry.emoji;
   overlay.classList.remove('hidden');
   drawTraceGuide();
 }
@@ -165,6 +228,7 @@ hearBtn.addEventListener('click', () => speak(currentEntry.letter));
 hearWordBtn.addEventListener('click', () => speak(currentEntry.word));
 clearTraceBtn.addEventListener('click', drawTraceGuide);
 doneTraceBtn.addEventListener('click', launchConfetti);
+modeToggleBtn.addEventListener('click', () => setGameMode(!gameMode));
 
 if ('speechSynthesis' in window) {
   window.speechSynthesis.onvoiceschanged = () => {};
