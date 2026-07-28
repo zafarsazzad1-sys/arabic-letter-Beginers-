@@ -9,7 +9,7 @@ const LETTERS = [
   { letter: 'د', name: 'Dal', translit: 'd', word: 'ديك', wordTranslit: 'Deek', meaning: 'Rooster' },
   { letter: 'ذ', name: 'Dhal', translit: 'dh', word: 'ذئب', wordTranslit: "Thi'b", meaning: 'Wolf' },
   { letter: 'ر', name: 'Ra', translit: 'r', word: 'رمان', wordTranslit: 'Rumman', meaning: 'Pomegranate' },
-  { letter: 'ز', name: 'Zay', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe' },
+  { letter: 'ز', name: 'Zaa', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe' },
   { letter: 'س', name: 'Seen', translit: 's', word: 'سمك', wordTranslit: 'Samak', meaning: 'Fish' },
   { letter: 'ش', name: 'Sheen', translit: 'sh', word: 'شمس', wordTranslit: 'Shams', meaning: 'Sun' },
   { letter: 'ص', name: 'Sad', translit: 's', word: 'صقر', wordTranslit: 'Saqr', meaning: 'Falcon' },
@@ -25,7 +25,7 @@ const LETTERS = [
   { letter: 'م', name: 'Meem', translit: 'm', word: 'موز', wordTranslit: 'Mawz', meaning: 'Banana' },
   { letter: 'ن', name: 'Noon', translit: 'n', word: 'نجمة', wordTranslit: 'Najma', meaning: 'Star' },
   { letter: 'ه', name: 'Ha', translit: 'h', word: 'هلال', wordTranslit: 'Hilal', meaning: 'Crescent' },
-  { letter: 'و', name: 'Waw', translit: 'w', word: 'وردة', wordTranslit: 'Warda', meaning: 'Rose' },
+  { letter: 'و', name: 'Wao', translit: 'w', word: 'وردة', wordTranslit: 'Warda', meaning: 'Rose' },
   { letter: 'ي', name: 'Ya', translit: 'y', word: 'يد', wordTranslit: 'Yad', meaning: 'Hand' },
 ];
 
