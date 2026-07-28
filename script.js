@@ -9,7 +9,7 @@ const LETTERS = [
   { letter: 'د', name: 'Dal', translit: 'd', word: 'ديك', wordTranslit: 'Deek', meaning: 'Rooster' },
   { letter: 'ذ', name: 'Dhal', translit: 'dh', word: 'ذئب', wordTranslit: "Thi'b", meaning: 'Wolf' },
   { letter: 'ر', name: 'Ra', translit: 'r', word: 'رمان', wordTranslit: 'Rumman', meaning: 'Pomegranate' },
-  { letter: 'ز', name: 'Zaa', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe' },
+  { letter: 'ز', name: 'Zaah', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe' },
   { letter: 'س', name: 'Seen', translit: 's', word: 'سمك', wordTranslit: 'Samak', meaning: 'Fish' },
   { letter: 'ش', name: 'Sheen', translit: 'sh', word: 'شمس', wordTranslit: 'Shams', meaning: 'Sun' },
   { letter: 'ص', name: 'Sad', translit: 's', word: 'صقر', wordTranslit: 'Saqr', meaning: 'Falcon' },
