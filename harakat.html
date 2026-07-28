@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vowel Sounds (Harakat) — Arabic Letter Playground</title>
+<link rel="stylesheet" href="style.css?v=4">
+</head>
+<body>
+
+<nav class="level-nav">
+  <a href="index.html" class="level-pill">1️⃣ Letters</a>
+  <a href="harakat.html" class="level-pill active">2️⃣ Vowel Sounds</a>
+</nav>
+
+<header class="app-header">
+  <h1>🌟 Vowel Sounds Playground 🌟</h1>
+  <p class="subtitle">Tap a letter, then tap each mark to hear the sound change!</p>
+  <div class="progress-badge">⭐ <span id="progress-count">0</span> / 28 letters mastered</div>
+  <br>
+  <button id="mode-toggle-btn" class="mode-btn">🎮 Play Sound Match</button>
+  <button id="reset-btn" class="mode-btn reset-btn">🔄 Reset Progress</button>
+</header>
+
+<div id="game-panel" class="game-panel hidden">
+  <div class="game-prompt">Listen, then tap the mark you heard!</div>
+  <div class="game-target-letter" id="game-target-letter">ب</div>
+  <button id="replay-btn" class="replay-btn">🔊 Replay Sound</button>
+  <div class="answer-chips" id="answer-chips"></div>
+  <div class="game-score">Score: <span id="game-score">0</span></div>
+</div>
+
+<main>
+  <div id="letter-grid" class="letter-grid"></div>
+</main>
+
+<div id="overlay" class="overlay hidden">
+  <div class="detail-card">
+    <button id="close-btn" class="close-btn" aria-label="Close">✕</button>
+
+    <div class="harakat-top">
+      <div class="detail-info">
+        <div class="letter-name" id="letter-name">Ba</div>
+        <div class="letter-translit" id="letter-translit">"b"</div>
+      </div>
+    </div>
+
+    <div class="stage-label" id="stage-label">Tap a mark below 👇</div>
+    <div class="stage" id="stage">ب</div>
+    <button id="hear-btn" class="hear-btn">🔊 Hear it</button>
+
+    <div class="vowel-chips" id="vowel-chips"></div>
+
+    <div class="mascot-bubble" id="mascot-bubble">⭐ Tap a vowel mark to hear the sound change!</div>
+  </div>
+</div>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="harakat.js?v=2"></script>
+</body>
+</html>

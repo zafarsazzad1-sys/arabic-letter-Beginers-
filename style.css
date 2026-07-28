@@ -18,9 +18,48 @@ body {
   color: var(--text);
 }
 
+.level-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 16px 0;
+}
+
+.level-pill {
+  text-decoration: none;
+  color: var(--text);
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+  transition: transform 0.12s ease;
+}
+
+.level-pill:hover {
+  transform: translateY(-2px);
+}
+
+.level-pill.active {
+  background: var(--accent);
+  color: #fff;
+}
+
 .app-header {
   text-align: center;
   padding: 28px 16px 12px;
+}
+
+.progress-badge {
+  display: inline-block;
+  margin-top: 10px;
+  background: #fff;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
 }
 
 .app-header h1 {
@@ -44,6 +83,13 @@ body {
   cursor: pointer;
   font-size: 14px;
   font-weight: 700;
+}
+
+.reset-btn {
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+  margin-left: 8px;
 }
 
 .game-panel {
@@ -289,4 +335,160 @@ main {
     transform: translateY(110vh) rotate(360deg);
     opacity: 0.3;
   }
+}
+
+/* --- Harakat level --- */
+
+.letter-btn {
+  position: relative;
+}
+
+.mastered-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ffd93d;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15);
+}
+
+.harakat-top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  justify-content: center;
+}
+
+.mascot-bubble {
+  margin: 16px auto 0;
+  background: #fff7e6;
+  border: 2px solid #ffd93d;
+  border-radius: 16px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 600;
+  max-width: 320px;
+}
+
+.stage {
+  margin: 18px auto;
+  font-size: 100px;
+  line-height: 1;
+  font-family: 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  color: var(--accent);
+  min-height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.15s ease;
+}
+
+.stage.pop {
+  animation: stage-pop 0.4s ease;
+}
+
+@keyframes stage-pop {
+  0% { transform: scale(0.7); }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+.stage-label {
+  text-align: center;
+  font-weight: 700;
+  opacity: 0.75;
+  min-height: 20px;
+  margin-bottom: 6px;
+}
+
+.vowel-chips {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+  flex-wrap: wrap;
+}
+
+.vowel-chip {
+  border: 3px solid transparent;
+  background: #f4f4f9;
+  border-radius: 16px;
+  padding: 10px 14px;
+  cursor: pointer;
+  min-width: 84px;
+  text-align: center;
+}
+
+.vowel-chip .chip-combo {
+  font-size: 34px;
+  font-family: 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  color: var(--text);
+}
+
+.vowel-chip .chip-name {
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.vowel-chip.explored {
+  border-color: #7ed957;
+  background: #f1fff0;
+}
+
+.vowel-chip.active {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.game-target-letter {
+  font-size: 64px;
+  font-family: 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  color: var(--accent);
+  text-align: center;
+  margin: 6px 0;
+}
+
+.replay-btn {
+  display: block;
+  margin: 0 auto 10px;
+  border: none;
+  background: var(--accent2);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.answer-chips {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.answer-chip {
+  border: none;
+  border-radius: 16px;
+  font-size: 40px;
+  width: 84px;
+  height: 84px;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.12);
+  font-family: 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  transition: transform 0.12s ease;
+}
+
+.answer-chip:hover {
+  transform: translateY(-2px) scale(1.05);
 }
