@@ -234,4 +234,22 @@ if ('speechSynthesis' in window) {
   window.speechSynthesis.onvoiceschanged = () => {};
 }
 
+function initWelcomeBack() {
+  try {
+    const lastVisited = localStorage.getItem('lastVisitedLevel');
+    const progress = JSON.parse(localStorage.getItem('harakatProgress')) || {};
+    const masteredCount = Object.values(progress).filter(p => p.fatha && p.kasra && p.damma).length;
+    if (lastVisited === 'harakat' && masteredCount > 0) {
+      const banner = document.getElementById('welcome-back-banner');
+      const text = document.getElementById('welcome-back-text');
+      text.textContent = `👋 Welcome back! You've mastered ${masteredCount}/28 vowel sounds — pick up where you left off.`;
+      banner.classList.remove('hidden');
+    }
+  } catch (e) {
+    // ignore malformed/unavailable storage
+  }
+  localStorage.setItem('lastVisitedLevel', 'letters');
+}
+
 renderGrid();
+initWelcomeBack();

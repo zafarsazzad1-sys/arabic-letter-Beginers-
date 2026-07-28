@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arabic Letter Playground</title>
-<link rel="stylesheet" href="style.css?v=4">
+<link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -18,6 +18,11 @@
   <p class="subtitle">Tap a letter to hear it, learn a word, and trace it!</p>
   <button id="mode-toggle-btn" class="mode-btn">🎮 Play Find-the-Letter</button>
 </header>
+
+<div id="welcome-back-banner" class="welcome-back hidden">
+  <span id="welcome-back-text"></span>
+  <a id="welcome-back-link" class="welcome-back-btn" href="harakat.html">Continue ▶</a>
+</div>
 
 <div id="game-panel" class="game-panel hidden">
   <div class="game-prompt">Find: <span id="game-target-name">Alif</span></div>
@@ -62,6 +67,6 @@
 
 <div id="confetti-container" class="confetti-container"></div>
 
-<script src="script.js?v=4"></script>
+<script src="script.js?v=5"></script>
 </body>
 </html>

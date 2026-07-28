@@ -323,3 +323,4 @@ if ('speechSynthesis' in window) {
 
 renderGrid();
 updateProgressBadge();
+localStorage.setItem('lastVisitedLevel', 'harakat');

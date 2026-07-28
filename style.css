@@ -51,6 +51,34 @@ body {
   padding: 28px 16px 12px;
 }
 
+.welcome-back {
+  max-width: 420px;
+  margin: 14px auto 0;
+  background: #fff7e6;
+  border: 2px solid #ffd93d;
+  border-radius: 16px;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.welcome-back.hidden {
+  display: none;
+}
+
+.welcome-back-btn {
+  display: inline-block;
+  margin-top: 8px;
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
 .progress-badge {
   display: inline-block;
   margin-top: 10px;
