@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bubble Pop — Arabic Letter Playground</title>
+<link rel="stylesheet" href="style.css?v=9">
+</head>
+<body>
+
+<nav class="level-nav">
+  <a href="index.html" class="level-pill">1️⃣ Letters</a>
+  <a href="harakat.html" class="level-pill">2️⃣ Vowel Sounds</a>
+  <a href="memory.html" class="level-pill">🧠 Memory Match</a>
+  <a href="bubble.html" class="level-pill active">🎈 Bubble Pop</a>
+</nav>
+
+<header class="app-header">
+  <h1>🎈 Bubble Pop 🎈</h1>
+  <p class="subtitle">Listen, then pop the bubble with that letter!</p>
+  <button id="restart-btn" class="mode-btn">🔄 Restart</button>
+</header>
+
+<div class="bubble-prompt">
+  <div class="bubble-prompt-text">Pop: <span id="target-name">Alif</span></div>
+  <button id="replay-btn" class="replay-btn">🔊 Hear it again</button>
+  <div class="bubble-score">Score: <span id="score">0</span></div>
+</div>
+
+<main>
+  <div id="bubble-pond" class="bubble-pond"></div>
+</main>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="bubble.js?v=1"></script>
+</body>
+</html>
