@@ -120,6 +120,11 @@ body {
   margin-left: 8px;
 }
 
+.reset-btn.confirming {
+  background: #ff6b6b;
+  color: #fff;
+}
+
 .game-panel {
   max-width: 900px;
   margin: 0 auto;

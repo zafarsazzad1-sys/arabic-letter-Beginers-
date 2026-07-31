@@ -307,12 +307,23 @@ replayBtn.addEventListener('click', () => {
   if (gameTarget) speak(gameTarget.letter.letter + gameTarget.harakah.mark);
 });
 modeToggleBtn.addEventListener('click', () => setGameMode(!gameMode));
+let resetConfirmTimeout = null;
 resetBtn.addEventListener('click', () => {
-  if (confirm('Reset all vowel-sound progress? This clears every star earned so far.')) {
+  if (resetBtn.classList.contains('confirming')) {
+    clearTimeout(resetConfirmTimeout);
+    resetBtn.classList.remove('confirming');
+    resetBtn.textContent = '🔄 Reset Progress';
     localStorage.removeItem(PROGRESS_KEY);
     renderGrid();
     updateProgressBadge();
     if (gameMode) startGameRound();
+  } else {
+    resetBtn.classList.add('confirming');
+    resetBtn.textContent = '⚠️ Tap again to confirm';
+    resetConfirmTimeout = setTimeout(() => {
+      resetBtn.classList.remove('confirming');
+      resetBtn.textContent = '🔄 Reset Progress';
+    }, 4000);
   }
 });
 
