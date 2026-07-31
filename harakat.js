@@ -9,7 +9,7 @@ const LETTERS = [
   { letter: 'د', name: 'Dal', translit: 'd' },
   { letter: 'ذ', name: 'Dhal', translit: 'dh' },
   { letter: 'ر', name: 'Ra', translit: 'r' },
-  { letter: 'ز', name: 'Zaah', translit: 'z' },
+  { letter: 'ز', name: 'Zaah', translit: 'z', sound: 'زاي' },
   { letter: 'س', name: 'Seen', translit: 's' },
   { letter: 'ش', name: 'Sheen', translit: 'sh' },
   { letter: 'ص', name: 'Sad', translit: 's' },
@@ -210,7 +210,7 @@ function openDetail(entry) {
   letterTranslit.textContent = `"${entry.translit}"`;
   stage.textContent = entry.letter;
   stageLabel.textContent = 'Tap a mark below 👇';
-  currentCombo = entry.letter;
+  currentCombo = null;
   setMascot('⭐ Tap a vowel mark to hear the sound change!');
   const progress = loadProgress();
   renderVowelChips(entry, progress);
@@ -302,7 +302,7 @@ closeBtn.addEventListener('click', closeDetail);
 overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeDetail();
 });
-hearBtn.addEventListener('click', () => speak(currentCombo || (currentEntry && currentEntry.letter)));
+hearBtn.addEventListener('click', () => speak(currentCombo || (currentEntry && (currentEntry.sound || currentEntry.letter))));
 replayBtn.addEventListener('click', () => {
   if (gameTarget) speak(gameTarget.letter.letter + gameTarget.harakah.mark);
 });

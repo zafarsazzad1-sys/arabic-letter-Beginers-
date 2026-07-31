@@ -9,7 +9,7 @@ const LETTERS = [
   { letter: 'د', name: 'Dal', translit: 'd', word: 'ديك', wordTranslit: 'Deek', meaning: 'Rooster', emoji: '🐓' },
   { letter: 'ذ', name: 'Dhal', translit: 'dh', word: 'ذئب', wordTranslit: "Thi'b", meaning: 'Wolf', emoji: '🐺' },
   { letter: 'ر', name: 'Ra', translit: 'r', word: 'رمان', wordTranslit: 'Rumman', meaning: 'Pomegranate', emoji: '🔴' },
-  { letter: 'ز', name: 'Zaah', translit: 'z', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe', emoji: '🦒' },
+  { letter: 'ز', name: 'Zaah', translit: 'z', sound: 'زاي', word: 'زرافة', wordTranslit: 'Zarafa', meaning: 'Giraffe', emoji: '🦒' },
   { letter: 'س', name: 'Seen', translit: 's', word: 'سمك', wordTranslit: 'Samak', meaning: 'Fish', emoji: '🐟' },
   { letter: 'ش', name: 'Sheen', translit: 'sh', word: 'شمس', wordTranslit: 'Shams', meaning: 'Sun', emoji: '☀️' },
   { letter: 'ص', name: 'Sad', translit: 's', word: 'صقر', wordTranslit: 'Saqr', meaning: 'Falcon', emoji: '🦅' },
@@ -86,7 +86,7 @@ function startGameRound() {
   }
   gameTarget = next;
   gameTargetNameEl.textContent = gameTarget.name;
-  setTimeout(() => speak(gameTarget.letter), 200);
+  setTimeout(() => speak(gameTarget.sound || gameTarget.letter), 200);
 }
 
 function handleGameGuess(entry, btn) {
@@ -216,12 +216,12 @@ closeBtn.addEventListener('click', closeDetail);
 overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeDetail();
 });
-hearBtn.addEventListener('click', () => speak(currentEntry.letter));
+hearBtn.addEventListener('click', () => speak(currentEntry.sound || currentEntry.letter));
 hearWordBtn.addEventListener('click', () => speak(currentEntry.word));
 clearTraceBtn.addEventListener('click', drawTraceGuide);
 doneTraceBtn.addEventListener('click', launchConfetti);
 modeToggleBtn.addEventListener('click', () => setGameMode(!gameMode));
-gameReplayBtn.addEventListener('click', () => gameTarget && speak(gameTarget.letter));
+gameReplayBtn.addEventListener('click', () => gameTarget && speak(gameTarget.sound || gameTarget.letter));
 
 if ('speechSynthesis' in window) {
   window.speechSynthesis.onvoiceschanged = () => {};
