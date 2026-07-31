@@ -1,32 +1,32 @@
 const LETTERS = [
-  { letter: 'ا', name: 'Alif', word: 'أسد', emoji: '🦁' },
-  { letter: 'ب', name: 'Ba', word: 'باب', emoji: '🚪' },
-  { letter: 'ت', name: 'Ta', word: 'تفاح', emoji: '🍎' },
-  { letter: 'ث', name: 'Tha', word: 'ثعلب', emoji: '🦊' },
-  { letter: 'ج', name: 'Jeem', word: 'جمل', emoji: '🐫' },
-  { letter: 'ح', name: 'Haa', word: 'حصان', emoji: '🐴' },
-  { letter: 'خ', name: 'Khaa', word: 'خروف', emoji: '🐑' },
-  { letter: 'د', name: 'Dal', word: 'ديك', emoji: '🐓' },
-  { letter: 'ذ', name: 'Dhal', word: 'ذئب', emoji: '🐺' },
-  { letter: 'ر', name: 'Ra', word: 'رمان', emoji: '🔴' },
-  { letter: 'ز', name: 'Zaah', sound: 'زاي', word: 'زرافة', emoji: '🦒' },
-  { letter: 'س', name: 'Seen', word: 'سمك', emoji: '🐟' },
-  { letter: 'ش', name: 'Sheen', word: 'شمس', emoji: '☀️' },
-  { letter: 'ص', name: 'Sad', word: 'صقر', emoji: '🦅' },
-  { letter: 'ض', name: 'Dad', word: 'ضفدع', emoji: '🐸' },
-  { letter: 'ط', name: 'Ta (heavy)', word: 'طائر', emoji: '🐦' },
-  { letter: 'ظ', name: 'Za', word: 'ظرف', emoji: '✉️' },
-  { letter: 'ع', name: 'Ayn', word: 'عين', emoji: '👁️' },
-  { letter: 'غ', name: 'Ghayn', word: 'غزال', emoji: '🦌' },
-  { letter: 'ف', name: 'Fa', word: 'فيل', emoji: '🐘' },
-  { letter: 'ق', name: 'Qaf', word: 'قلم', emoji: '🖊️' },
-  { letter: 'ك', name: 'Kaf', word: 'كتاب', emoji: '📖' },
-  { letter: 'ل', name: 'Lam', word: 'ليمون', emoji: '🍋' },
-  { letter: 'م', name: 'Meem', word: 'موز', emoji: '🍌' },
-  { letter: 'ن', name: 'Noon', word: 'نجمة', emoji: '⭐' },
-  { letter: 'ه', name: 'Ha', word: 'هلال', emoji: '🌙' },
-  { letter: 'و', name: 'Wao', word: 'وردة', emoji: '🌹' },
-  { letter: 'ي', name: 'Ya', word: 'يد', emoji: '✋' },
+  { letter: 'ا', name: 'Alif' },
+  { letter: 'ب', name: 'Ba' },
+  { letter: 'ت', name: 'Ta' },
+  { letter: 'ث', name: 'Tha' },
+  { letter: 'ج', name: 'Jeem' },
+  { letter: 'ح', name: 'Haa' },
+  { letter: 'خ', name: 'Khaa' },
+  { letter: 'د', name: 'Dal' },
+  { letter: 'ذ', name: 'Dhal' },
+  { letter: 'ر', name: 'Ra' },
+  { letter: 'ز', name: 'Zaah', sound: 'زاي' },
+  { letter: 'س', name: 'Seen' },
+  { letter: 'ش', name: 'Sheen' },
+  { letter: 'ص', name: 'Sad' },
+  { letter: 'ض', name: 'Dad' },
+  { letter: 'ط', name: 'Ta (heavy)' },
+  { letter: 'ظ', name: 'Za' },
+  { letter: 'ع', name: 'Ayn' },
+  { letter: 'غ', name: 'Ghayn' },
+  { letter: 'ف', name: 'Fa' },
+  { letter: 'ق', name: 'Qaf' },
+  { letter: 'ك', name: 'Kaf' },
+  { letter: 'ل', name: 'Lam' },
+  { letter: 'م', name: 'Meem' },
+  { letter: 'ن', name: 'Noon' },
+  { letter: 'ه', name: 'Ha' },
+  { letter: 'و', name: 'Wao' },
+  { letter: 'ي', name: 'Ya' },
 ];
 
 const PAIR_COUNT = 6;
@@ -84,8 +84,8 @@ function buildDeck() {
   const chosen = shuffleArray(LETTERS).slice(0, PAIR_COUNT);
   const cards = [];
   chosen.forEach((entry, i) => {
-    cards.push({ pairId: i, type: 'letter', entry });
-    cards.push({ pairId: i, type: 'emoji', entry });
+    cards.push({ pairId: i, entry });
+    cards.push({ pairId: i, entry });
   });
   return shuffleArray(cards);
 }
@@ -104,7 +104,7 @@ function renderCard(card, index) {
 
   const face = document.createElement('div');
   face.className = 'memory-card-face';
-  face.textContent = card.type === 'letter' ? card.entry.letter : card.entry.emoji;
+  face.textContent = card.entry.letter;
 
   inner.appendChild(back);
   inner.appendChild(face);
