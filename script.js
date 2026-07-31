@@ -53,24 +53,15 @@ const modeToggleBtn = document.getElementById('mode-toggle-btn');
 const gamePanel = document.getElementById('game-panel');
 const gameTargetNameEl = document.getElementById('game-target-name');
 const gameScoreEl = document.getElementById('game-score');
+const gameReplayBtn = document.getElementById('game-replay-btn');
 
 let currentEntry = null;
 let gameMode = false;
 let gameScore = 0;
 let gameTarget = null;
 
-function shuffleArray(arr) {
-  const shuffled = arr.slice();
-  for (let i = shuffled.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-  }
-  return shuffled;
-}
-
 function renderGrid() {
-  const shuffledLetters = shuffleArray(LETTERS);
-  shuffledLetters.forEach((entry, i) => {
+  LETTERS.forEach((entry, i) => {
     const btn = document.createElement('button');
     btn.className = 'letter-btn';
     btn.textContent = entry.letter;
@@ -95,6 +86,7 @@ function startGameRound() {
   }
   gameTarget = next;
   gameTargetNameEl.textContent = gameTarget.name;
+  setTimeout(() => speak(gameTarget.letter), 200);
 }
 
 function handleGameGuess(entry, btn) {
@@ -229,6 +221,7 @@ hearWordBtn.addEventListener('click', () => speak(currentEntry.word));
 clearTraceBtn.addEventListener('click', drawTraceGuide);
 doneTraceBtn.addEventListener('click', launchConfetti);
 modeToggleBtn.addEventListener('click', () => setGameMode(!gameMode));
+gameReplayBtn.addEventListener('click', () => gameTarget && speak(gameTarget.letter));
 
 if ('speechSynthesis' in window) {
   window.speechSynthesis.onvoiceschanged = () => {};

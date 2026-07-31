@@ -111,8 +111,7 @@ function shuffleArray(arr) {
 function renderGrid() {
   grid.innerHTML = '';
   const progress = loadProgress();
-  const shuffledLetters = shuffleArray(LETTERS);
-  shuffledLetters.forEach((entry, i) => {
+  LETTERS.forEach((entry, i) => {
     const btn = document.createElement('button');
     btn.className = 'letter-btn';
     btn.dataset.letter = entry.letter;
