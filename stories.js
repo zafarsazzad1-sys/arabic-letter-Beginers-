@@ -116,8 +116,122 @@ const STORIES = [
       },
     ],
   },
-  { id: 'musa', name: 'Musa (AS)', emoji: '🌊', comingSoon: true },
-  { id: 'nuh', name: 'Nuh (AS)', emoji: '🚢', comingSoon: true },
+  {
+    id: 'musa',
+    name: 'Musa (AS)',
+    emoji: '🐑',
+    slides: [
+      { emoji: '🏃', text: 'Prophet Musa (AS) had to flee from Egypt all alone, leaving his home behind, after Pharaoh’s people wanted to punish him.' },
+      { emoji: '🏜️', text: 'Musa (AS) walked for days through the desert, tired, hungry, and with nothing with him, until he reached a place called Madyan.' },
+      { emoji: '💧', text: 'At a well, he saw many shepherds watering their animals, and two women waiting aside, unable to reach the water with their flock.' },
+      { emoji: '🐑', text: 'Musa (AS) kindly helped the two women water their sheep, then went to rest in the shade of a tree, exhausted and with nothing to eat.' },
+      {
+        emoji: '🤲',
+        text: 'Alone and with nothing, Musa (AS) turned to Allah and made a humble dua, saying he was in need of whatever good Allah would give him.',
+        dua: {
+          arabic: 'رَبِّ إِنِّي لِمَا أَنزَلْتَ إِلَيَّ مِنْ خَيْرٍ فَقِيرٌ',
+          english: '"My Lord, indeed I am, for whatever good You would send down to me, in need."',
+          reference: 'Quran 28:24 — said by Musa (AS) resting in Madyan',
+          audio: 'audio/musa-dua-28-24.mp3',
+        },
+      },
+      { emoji: '🚶‍♀️', text: 'Soon after, one of the two women came back and invited him to meet her father, who was kind and elderly.' },
+      { emoji: '🤝', text: 'The old man was thankful for Musa (AS)’s help, and gave him a home, food, and work to do.' },
+      { emoji: '✨', text: 'Allah answered Musa (AS)’s dua and provided for him exactly when he had nothing — Allah always provides for those who trust Him.' },
+    ],
+    quiz: [
+      {
+        question: 'Why did Musa (AS) leave Egypt?',
+        options: [
+          { emoji: '😨', label: 'He had to flee for safety', correct: true },
+          { emoji: '🎉', label: 'He went on a trip', correct: false },
+          { emoji: '📚', label: 'He went to school', correct: false },
+        ],
+      },
+      {
+        question: 'What did Musa (AS) do for the two women at the well?',
+        options: [
+          { emoji: '💧', label: 'Helped water their sheep', correct: true },
+          { emoji: '🍞', label: 'Gave them food', correct: false },
+          { emoji: '🏠', label: 'Built them a house', correct: false },
+        ],
+      },
+      {
+        question: 'How did Musa (AS) feel when he made his dua?',
+        options: [
+          { emoji: '😔', label: 'Tired, hungry, and alone', correct: true },
+          { emoji: '😄', label: 'Happy and full', correct: false },
+          { emoji: '😴', label: 'Sleepy and bored', correct: false },
+        ],
+      },
+      {
+        question: 'What did Musa (AS) say in his dua?',
+        options: [
+          { emoji: '🤲', label: '"My Lord, I am in need of whatever good You give me"', correct: true },
+          { emoji: '😡', label: '"Why is this happening to me?"', correct: false },
+          { emoji: '🤐', label: 'He said nothing', correct: false },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'nuh',
+    name: 'Nuh (AS)',
+    emoji: '🚢',
+    slides: [
+      { emoji: '🕌', text: 'Prophet Nuh (AS) was sent by Allah to his people, asking them to stop worshipping idols and worship only Allah.' },
+      { emoji: '⏳', text: 'Nuh (AS) patiently invited his people for nearly 950 years, but almost no one believed him.' },
+      { emoji: '🚢', text: 'Allah commanded Nuh (AS) to build a large ship, even though there was no sea nearby. His people laughed at him for building a ship on dry land.' },
+      {
+        emoji: '🤲',
+        text: 'After so many years of patience, Nuh (AS) turned to Allah, asking forgiveness for himself, his parents, and all believers.',
+        dua: {
+          arabic: 'رَبِّ اغْفِرْ لِي وَلِوَالِدَيَّ وَلِمَن دَخَلَ بَيْتِيَ مُؤْمِنًا وَلِلْمُؤْمِنِينَ وَالْمُؤْمِنَاتِ',
+          english: '"My Lord, forgive me and my parents and whoever enters my house a believer, and the believing men and believing women."',
+          reference: 'Quran 71:28 — said by Nuh (AS) near the end of his mission',
+          audio: 'audio/nuh-dua-71-28.mp3',
+        },
+      },
+      { emoji: '🐘🐦', text: 'Allah told Nuh (AS) to bring a pair of every kind of animal onto the ship, along with his family and the believers.' },
+      { emoji: '🌧️🌊', text: 'A huge flood came and covered everything, but the ship kept everyone safe on board.' },
+      { emoji: '🏔️', text: 'When the flood ended, the ship came to rest on a mountain, and the water dried up.' },
+      { emoji: '✨', text: 'Nuh (AS) and the believers stepped onto dry land safely, thankful that Allah had saved them.' },
+    ],
+    quiz: [
+      {
+        question: 'How long did Nuh (AS) invite his people to believe?',
+        options: [
+          { emoji: '⏳', label: 'Almost 950 years', correct: true },
+          { emoji: '📅', label: 'One week', correct: false },
+          { emoji: '🗓️', label: 'One year', correct: false },
+        ],
+      },
+      {
+        question: 'What did Allah tell Nuh (AS) to build?',
+        options: [
+          { emoji: '🚢', label: 'A large ship', correct: true },
+          { emoji: '🏠', label: 'A house', correct: false },
+          { emoji: '🕌', label: 'A mosque', correct: false },
+        ],
+      },
+      {
+        question: 'Who did Nuh (AS) bring onto the ship?',
+        options: [
+          { emoji: '🐘', label: 'A pair of every animal, his family, and believers', correct: true },
+          { emoji: '💰', label: 'Gold and treasure', correct: false },
+          { emoji: '🎈', label: 'Toys and games', correct: false },
+        ],
+      },
+      {
+        question: 'What did Nuh (AS) ask Allah for in his dua?',
+        options: [
+          { emoji: '🤲', label: 'Forgiveness for himself, his parents, and believers', correct: true },
+          { emoji: '😡', label: 'To punish everyone', correct: false },
+          { emoji: '🏆', label: 'To become king', correct: false },
+        ],
+      },
+    ],
+  },
   { id: 'yusuf', name: 'Yusuf (AS)', emoji: '🌙', comingSoon: true },
 ];
 
