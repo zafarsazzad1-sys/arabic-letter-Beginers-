@@ -48,10 +48,11 @@ const STORIES = [
         ],
       },
       {
-        question: 'What happened to his people in the end?',
+        question: 'What happened to his people after Yunus (AS) was saved?',
         options: [
           { emoji: '🤲', label: 'They repented and were forgiven', correct: true },
           { emoji: '🏃', label: 'They ran away', correct: false },
+          { emoji: '🏚️', label: 'Their town was destroyed', correct: false },
           { emoji: '😢', label: 'Nothing changed', correct: false },
         ],
       },
@@ -223,8 +224,7 @@ function renderQuestion() {
   q.options.forEach(opt => {
     const btn = document.createElement('button');
     btn.className = 'story-quiz-option';
-    btn.textContent = opt.emoji;
-    btn.title = opt.label;
+    btn.innerHTML = `<div class="story-quiz-option-emoji">${opt.emoji}</div><div class="story-quiz-option-label">${opt.label}</div>`;
     btn.addEventListener('click', () => handleAnswer(opt, btn));
     quizOptionsEl.appendChild(btn);
   });
