@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Word Builder — Arabic Letter Playground</title>
+<link rel="stylesheet" href="style.css?v=10">
+</head>
+<body>
+
+<nav class="level-nav">
+  <a href="index.html" class="level-pill">1️⃣ Letters</a>
+  <a href="harakat.html" class="level-pill">2️⃣ Vowel Sounds</a>
+  <a href="memory.html" class="level-pill">🧠 Memory Match</a>
+  <a href="bubble.html" class="level-pill">🎈 Bubble Pop</a>
+  <a href="connector.html" class="level-pill active">🧩 Word Builder</a>
+</nav>
+
+<header class="app-header">
+  <h1>🧩 Word Builder 🧩</h1>
+  <p class="subtitle">Drag the letters into place to build the word!</p>
+  <button id="new-word-btn" class="mode-btn">🔀 New Word</button>
+</header>
+
+<div class="connector-words-built">Words built: <span id="words-built">0</span></div>
+
+<div class="connector-hint-card">
+  <div class="connector-hint-emoji" id="hint-emoji">🏠</div>
+  <div class="connector-hint-text" id="hint-text">House</div>
+</div>
+
+<div id="connector-slots" class="connector-slots"></div>
+
+<div id="connector-tray" class="connector-tray"></div>
+
+<div id="celebrate" class="connector-celebrate hidden">
+  <div class="connector-celebrate-word" id="celebrate-word">بيت</div>
+  <div class="connector-celebrate-meaning" id="celebrate-meaning">Bayt — House 🏠</div>
+  <button id="hear-word-btn" class="hear-btn">🔊 Hear the word</button>
+  <br><br>
+  <button id="next-word-btn" class="mode-btn">Next Word ▶</button>
+</div>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="connector.js?v=1"></script>
+</body>
+</html>
