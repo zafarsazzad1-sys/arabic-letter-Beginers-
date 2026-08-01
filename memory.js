@@ -58,13 +58,18 @@ function shuffleArray(arr) {
 
 function speak(text, rate) {
   if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
+  const synth = window.speechSynthesis;
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'ar-SA';
   utterance.rate = rate || 0.75;
-  const arabicVoice = window.speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('ar'));
+  const arabicVoice = synth.getVoices().find(v => v.lang && v.lang.startsWith('ar'));
   if (arabicVoice) utterance.voice = arabicVoice;
-  window.speechSynthesis.speak(utterance);
+
+  synth.cancel();
+  setTimeout(() => {
+    synth.resume();
+    synth.speak(utterance);
+  }, 40);
 }
 
 function launchConfetti() {
