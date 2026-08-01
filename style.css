@@ -835,3 +835,190 @@ main {
   font-weight: 700;
   margin-bottom: 10px;
 }
+
+/* --- Prophet Stories --- */
+
+.story-select-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  padding: 0 16px;
+}
+
+.story-select-grid.hidden {
+  display: none;
+}
+
+.story-card {
+  border: none;
+  border-radius: 20px;
+  padding: 20px 10px;
+  text-align: center;
+  cursor: pointer;
+  background: #fff;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.12);
+  font-weight: 700;
+}
+
+.story-card-emoji {
+  font-size: 42px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.story-card.locked {
+  opacity: 0.55;
+  cursor: default;
+  background: #f4f4f9;
+}
+
+.story-card.completed {
+  box-shadow: 0 0 0 3px #7ed957, 0 3px 0 rgba(0,0,0,0.12);
+}
+
+.story-view {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
+.story-view.hidden {
+  display: none;
+}
+
+.story-back-btn {
+  display: block;
+  margin: 0 auto 20px;
+  border: none;
+  background: #fff;
+  color: var(--text);
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.1);
+}
+
+.story-title {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.story-listen-btn {
+  display: block;
+  margin: 0 auto 24px;
+  border: none;
+  background: var(--accent2);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.story-slide {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: #fff;
+  border-radius: 18px;
+  padding: 14px 18px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.08);
+}
+
+.story-slide-emoji {
+  font-size: 34px;
+  flex-shrink: 0;
+}
+
+.story-slide-text {
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.story-dua-box {
+  text-align: center;
+  background: #fff7e6;
+  border: 2px solid #ffd93d;
+  border-radius: 16px;
+  padding: 14px;
+  margin: 10px 0 12px;
+}
+
+.story-dua-arabic {
+  font-size: 28px;
+  font-family: 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.story-dua-btn {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.story-quiz-heading {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 800;
+  margin: 30px 0 16px;
+}
+
+.story-quiz-question {
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.story-quiz-options {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.story-quiz-option {
+  border: 3px solid transparent;
+  background: #fff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  cursor: pointer;
+  font-size: 40px;
+  box-shadow: 0 3px 0 rgba(0,0,0,0.12);
+  min-width: 90px;
+}
+
+.story-quiz-option.correct-flash {
+  border-color: #7ed957;
+  background: #f1fff0;
+}
+
+.story-quiz-option.wrong-flash {
+  border-color: #ff6b6b;
+}
+
+.story-complete-banner {
+  text-align: center;
+  background: #fff7e6;
+  border: 2px solid #ffd93d;
+  border-radius: 20px;
+  padding: 20px;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.story-complete-banner.hidden {
+  display: none;
+}

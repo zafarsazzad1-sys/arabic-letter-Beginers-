@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prophet Stories — Arabic Letter Playground</title>
+<link rel="stylesheet" href="style.css?v=12">
+</head>
+<body>
+
+<nav class="level-nav">
+  <a href="index.html" class="level-pill">1️⃣ Letters</a>
+  <a href="harakat.html" class="level-pill">2️⃣ Vowel Sounds</a>
+  <a href="memory.html" class="level-pill">🧠 Memory Match</a>
+  <a href="bubble.html" class="level-pill">🎈 Bubble Pop</a>
+  <a href="connector.html" class="level-pill">🧩 Word Builder</a>
+  <a href="stories.html" class="level-pill active">📖 Stories</a>
+</nav>
+
+<header class="app-header">
+  <h1>📖 Prophet Stories 📖</h1>
+  <p class="subtitle">Tap a story to listen, then try the quiz!</p>
+</header>
+
+<div id="story-select-grid" class="story-select-grid"></div>
+
+<div id="story-view" class="story-view hidden">
+  <button id="story-back-btn" class="story-back-btn">◀ Back to Stories</button>
+  <div class="story-title" id="story-title">Yunus (AS)</div>
+  <button id="story-listen-btn" class="story-listen-btn">🔊 Listen to the Story</button>
+  <div id="story-slides"></div>
+
+  <div class="story-quiz-heading">📝 Quiz Time!</div>
+  <div id="story-quiz-question" class="story-quiz-question"></div>
+  <div id="story-quiz-options" class="story-quiz-options"></div>
+
+  <div id="story-complete-banner" class="story-complete-banner hidden">
+    🎉 Great job! You know the story of <span id="story-complete-name">Yunus (AS)</span>!
+  </div>
+</div>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="stories.js?v=2"></script>
+</body>
+</html>
