@@ -968,6 +968,13 @@ main {
   font-size: 13px;
 }
 
+.story-dua-reference {
+  font-size: 12px;
+  opacity: 0.6;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
 .story-quiz-heading {
   text-align: center;
   font-size: 20px;

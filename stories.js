@@ -15,6 +15,8 @@ const STORIES = [
         dua: {
           arabic: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ',
           english: '"There is no god but You, glory be to You — I have indeed done wrong."',
+          reference: 'Quran 21:87',
+          audio: 'audio/yunus-dua-21-87.mp3',
         },
       },
       { emoji: '🏖️🌿', text: 'Allah forgave him and had the fish bring him safely to the shore, where a leafy plant grew to give him shade.' },
@@ -111,6 +113,30 @@ function speak(text, lang, rate) {
   }, 40);
 }
 
+let duaAudioEl = null;
+
+function playDua(dua, btn) {
+  if (!dua.audio) {
+    speak(dua.arabic, 'ar-SA', 0.7);
+    return;
+  }
+  if (!duaAudioEl) {
+    duaAudioEl = new Audio();
+  }
+  const originalLabel = btn.textContent;
+  duaAudioEl.onended = () => { btn.textContent = originalLabel; };
+  duaAudioEl.onerror = () => {
+    btn.textContent = originalLabel;
+    speak(dua.arabic, 'ar-SA', 0.7);
+  };
+  duaAudioEl.src = dua.audio;
+  btn.textContent = '▶ Playing…';
+  duaAudioEl.play().catch(() => {
+    btn.textContent = originalLabel;
+    speak(dua.arabic, 'ar-SA', 0.7);
+  });
+}
+
 function launchConfetti() {
   for (let i = 0; i < 60; i++) {
     const piece = document.createElement('div');
@@ -162,10 +188,12 @@ function openStory(story) {
       duaBox.innerHTML = `
         <div class="story-dua-arabic">${slide.dua.arabic}</div>
         <div>${slide.dua.english}</div>
+        ${slide.dua.reference ? `<div class="story-dua-reference">${slide.dua.reference}</div>` : ''}
         <br>
-        <button class="story-dua-btn">🔊 Hear the dua in Arabic</button>
+        <button class="story-dua-btn">🔊 Hear the dua (recited)</button>
       `;
-      duaBox.querySelector('.story-dua-btn').addEventListener('click', () => speak(slide.dua.arabic, 'ar-SA', 0.7));
+      const duaBtn = duaBox.querySelector('.story-dua-btn');
+      duaBtn.addEventListener('click', () => playDua(slide.dua, duaBtn));
       storySlidesEl.appendChild(duaBox);
     }
   });
