@@ -5,13 +5,13 @@ const STORIES = [
     emoji: '🐋',
     slides: [
       { emoji: '🕌', text: 'Allah sent Prophet Yunus (AS) to his people, to invite them to worship only Allah.' },
-      { emoji: '😔', text: 'His people would not listen. Yunus felt upset and left them, without waiting for Allah’s permission.' },
+      { emoji: '😔', text: 'His people would not listen. Yunus (AS) felt upset and left them, without waiting for Allah’s permission.' },
       { emoji: '⛈️', text: 'He got on a ship, but a huge storm hit. The sailors said someone had to go into the sea to save the ship.' },
-      { emoji: '🌊', text: 'To make the ship lighter, the sailors picked names to see who must go into the sea. Every time, it was Yunus’s name — so he went into the sea.' },
+      { emoji: '🌊', text: 'To make the ship lighter, the sailors picked names to see who must go into the sea. Every time, the name chosen was Yunus (AS) — so he went into the sea.' },
       { emoji: '🐋', text: 'Allah sent a huge fish to swallow him whole, without hurting him at all.' },
       {
         emoji: '🤲',
-        text: 'Inside the dark belly of the fish, Yunus realized his mistake and called out to Allah, asking forgiveness.',
+        text: 'Inside the dark belly of the fish, Yunus (AS) realized his mistake and called out to Allah, asking forgiveness.',
         dua: {
           arabic: 'لَا إِلَٰهَ إِلَّا أَنْتَ سُبْحَانَكَ إِنِّي كُنْتُ مِنَ الظَّالِمِينَ',
           english: '"There is no god but You, glory be to You — I have indeed done wrong."',
@@ -58,7 +58,64 @@ const STORIES = [
       },
     ],
   },
-  { id: 'ibrahim', name: 'Ibrahim (AS)', emoji: '🔥', comingSoon: true },
+  {
+    id: 'ibrahim',
+    name: 'Ibrahim (AS)',
+    emoji: '🔥',
+    slides: [
+      { emoji: '🗿', text: 'Prophet Ibrahim (AS) grew up seeing his people worship idols made of stone, that could not see, hear, or help anyone.' },
+      { emoji: '🤔', text: 'Ibrahim (AS) did not believe in these idols. He knew only Allah deserved to be worshipped.' },
+      { emoji: '🔨', text: 'One day, while everyone was away, Ibrahim (AS) broke all the idols in the temple — except the biggest one.' },
+      { emoji: '😠', text: 'When his people came back and saw this, they were furious and asked who had done it.' },
+      { emoji: '😏', text: 'Ibrahim (AS) said, "Ask the biggest one — maybe he did it!" His people knew the idols could never speak, but they were too proud to admit he was right.' },
+      {
+        emoji: '🔥',
+        text: 'Angry, they built a huge fire and threw Ibrahim (AS) into it. As the flames rose around him, Ibrahim (AS) called out to Allah.',
+        dua: {
+          arabic: 'حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ',
+          english: '"Allah is sufficient for us, and He is the best Disposer of affairs."',
+          reference: 'Quran 3:173 — said by Ibrahim (AS) in the fire (Sahih al-Bukhari 4563)',
+          audio: 'audio/ibrahim-dua-3-173.mp3',
+        },
+      },
+      { emoji: '❄️🔥', text: 'Allah commanded the fire: "O fire, be cool and safe for Ibrahim (AS)!" And it obeyed at once.' },
+      { emoji: '😇✨', text: 'Ibrahim (AS) walked out of the fire completely unharmed, and everyone was amazed at Allah’s power.' },
+    ],
+    quiz: [
+      {
+        question: 'What did Ibrahim (AS) break?',
+        options: [
+          { emoji: '🗿', label: 'The idols', correct: true },
+          { emoji: '🪟', label: 'Windows', correct: false },
+          { emoji: '🏺', label: 'Pots', correct: false },
+        ],
+      },
+      {
+        question: 'Why were his people angry?',
+        options: [
+          { emoji: '😡', label: 'Because he broke their idols', correct: true },
+          { emoji: '😴', label: 'Because he was late', correct: false },
+          { emoji: '🍽️', label: 'Because he ate their food', correct: false },
+        ],
+      },
+      {
+        question: 'What happened when they threw him in the fire?',
+        options: [
+          { emoji: '❄️', label: 'The fire became cool and safe', correct: true },
+          { emoji: '💨', label: 'He disappeared', correct: false },
+          { emoji: '😢', label: 'He got hurt', correct: false },
+        ],
+      },
+      {
+        question: 'What did Ibrahim (AS) say as he was thrown into the fire?',
+        options: [
+          { emoji: '🤲', label: '"Allah is sufficient for us"', correct: true },
+          { emoji: '😢', label: '"Please don\'t hurt me"', correct: false },
+          { emoji: '🤐', label: 'Nothing, he stayed silent', correct: false },
+        ],
+      },
+    ],
+  },
   { id: 'musa', name: 'Musa (AS)', emoji: '🌊', comingSoon: true },
   { id: 'nuh', name: 'Nuh (AS)', emoji: '🚢', comingSoon: true },
   { id: 'yusuf', name: 'Yusuf (AS)', emoji: '🌙', comingSoon: true },
