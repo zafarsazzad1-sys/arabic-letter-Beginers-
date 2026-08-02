@@ -136,6 +136,7 @@ function attachDragHandlers(tile, tileData) {
     tile.setPointerCapture(e.pointerId);
     tile.addEventListener('pointermove', onPointerMove);
     tile.addEventListener('pointerup', onPointerUp);
+    tile.addEventListener('pointercancel', onPointerCancel);
   }
 
   function onPointerMove(e) {
@@ -143,10 +144,32 @@ function attachDragHandlers(tile, tileData) {
     tile.style.top = (e.clientY - offsetY) + 'px';
   }
 
-  function onPointerUp(e) {
+  function snapBack() {
+    tile.style.left = startX + 'px';
+    tile.style.top = startY + 'px';
+    setTimeout(() => {
+      tile.style.position = 'static';
+      tile.style.left = '';
+      tile.style.top = '';
+      tile.style.width = '';
+      tile.style.height = '';
+    }, 260);
+  }
+
+  function cleanupListeners() {
     tile.removeEventListener('pointermove', onPointerMove);
     tile.removeEventListener('pointerup', onPointerUp);
+    tile.removeEventListener('pointercancel', onPointerCancel);
     tile.classList.remove('dragging');
+  }
+
+  function onPointerCancel() {
+    cleanupListeners();
+    snapBack();
+  }
+
+  function onPointerUp(e) {
+    cleanupListeners();
 
     tile.style.pointerEvents = 'none';
     const dropEl = document.elementFromPoint(e.clientX, e.clientY);
@@ -164,15 +187,7 @@ function attachDragHandlers(tile, tileData) {
       return;
     }
 
-    tile.style.left = startX + 'px';
-    tile.style.top = startY + 'px';
-    setTimeout(() => {
-      tile.style.position = 'static';
-      tile.style.left = '';
-      tile.style.top = '';
-      tile.style.width = '';
-      tile.style.height = '';
-    }, 260);
+    snapBack();
   }
 
   tile.addEventListener('pointerdown', onPointerDown);

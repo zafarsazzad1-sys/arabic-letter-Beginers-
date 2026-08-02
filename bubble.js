@@ -128,7 +128,8 @@ function handleBubbleClick(record) {
     scoreEl.textContent = score;
     speak(currentTarget.sound || currentTarget.letter);
     launchConfetti(18);
-    setTimeout(() => removeBubble(record), 300);
+    activeBubbles = activeBubbles.filter(b => b !== record);
+    setTimeout(() => record.el.remove(), 300);
     pickNewTarget();
   } else {
     record.el.classList.add('wrong-flash');

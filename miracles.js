@@ -75,6 +75,7 @@ let roundOrder = [];
 let roundIndex = 0;
 let score = 0;
 let currentMiracle = null;
+let roundLocked = false;
 
 function shuffleArray(arr) {
   const shuffled = arr.slice();
@@ -125,6 +126,7 @@ function startGame() {
 }
 
 function showRound() {
+  roundLocked = false;
   if (roundIndex >= roundOrder.length) {
     completeGame();
     return;
@@ -150,7 +152,9 @@ function showRound() {
 }
 
 function handleAnswer(opt, btn) {
+  if (roundLocked) return;
   if (opt.id === currentMiracle.id) {
+    roundLocked = true;
     btn.classList.add('correct-flash');
     score++;
     scoreEl.textContent = score;

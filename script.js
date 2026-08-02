@@ -59,6 +59,7 @@ let currentEntry = null;
 let gameMode = false;
 let gameScore = 0;
 let gameTarget = null;
+let roundLocked = false;
 
 function renderGrid() {
   LETTERS.forEach((entry, i) => {
@@ -90,12 +91,15 @@ function startGameRound() {
 }
 
 function handleGameGuess(entry, btn) {
+  if (roundLocked) return;
   if (entry.letter === gameTarget.letter) {
+    roundLocked = true;
     btn.classList.add('correct-flash');
     gameScore++;
     gameScoreEl.textContent = gameScore;
     setTimeout(() => {
       btn.classList.remove('correct-flash');
+      roundLocked = false;
       startGameRound();
     }, 500);
   } else {
@@ -112,6 +116,7 @@ function setGameMode(on) {
     gameScore = 0;
     gameScoreEl.textContent = gameScore;
     gameTarget = null;
+    roundLocked = false;
     startGameRound();
   }
 }

@@ -72,6 +72,7 @@ let currentCombo = null;
 let gameMode = false;
 let gameScore = 0;
 let gameTarget = null; // { letter, harakah }
+let roundLocked = false;
 
 function loadProgress() {
   try {
@@ -265,7 +266,9 @@ function startGameRound() {
 }
 
 function handleGameGuess(h, btn) {
+  if (roundLocked) return;
   if (h.key === gameTarget.harakah.key) {
+    roundLocked = true;
     btn.classList.add('correct-flash');
     gameScore++;
     gameScoreEl.textContent = gameScore;
@@ -283,6 +286,7 @@ function handleGameGuess(h, btn) {
 
     setTimeout(() => {
       btn.classList.remove('correct-flash');
+      roundLocked = false;
       startGameRound();
     }, 700);
   } else {
@@ -299,6 +303,7 @@ function setGameMode(on) {
   if (gameMode) {
     gameScore = 0;
     gameScoreEl.textContent = gameScore;
+    roundLocked = false;
     startGameRound();
   }
 }
@@ -321,7 +326,10 @@ resetBtn.addEventListener('click', () => {
     localStorage.removeItem(PROGRESS_KEY);
     renderGrid();
     updateProgressBadge();
-    if (gameMode) startGameRound();
+    if (gameMode) {
+      roundLocked = false;
+      startGameRound();
+    }
   } else {
     resetBtn.classList.add('confirming');
     resetBtn.textContent = '⚠️ Tap again to confirm';

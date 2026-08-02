@@ -481,6 +481,7 @@ const confettiContainer = document.getElementById('confetti-container');
 
 let currentStory = null;
 let currentQuestionIndex = 0;
+let quizLocked = false;
 
 function getCompleted() {
   try {
@@ -516,24 +517,31 @@ function speak(text, lang, rate) {
 
 let duaAudioEl = null;
 
+const DUA_BTN_LABEL = '🔊 Hear the dua (recited)';
+
 function playDua(dua, btn) {
   if (!dua.audio) {
     speak(dua.arabic, 'ar-SA', 0.7);
     return;
   }
+  if (btn.dataset.playing === 'true') return;
   if (!duaAudioEl) {
     duaAudioEl = new Audio();
   }
-  const originalLabel = btn.textContent;
-  duaAudioEl.onended = () => { btn.textContent = originalLabel; };
+  btn.dataset.playing = 'true';
+  const reset = () => {
+    btn.textContent = DUA_BTN_LABEL;
+    btn.dataset.playing = 'false';
+  };
+  duaAudioEl.onended = reset;
   duaAudioEl.onerror = () => {
-    btn.textContent = originalLabel;
+    reset();
     speak(dua.arabic, 'ar-SA', 0.7);
   };
   duaAudioEl.src = dua.audio;
   btn.textContent = '▶ Playing…';
   duaAudioEl.play().catch(() => {
-    btn.textContent = originalLabel;
+    reset();
     speak(dua.arabic, 'ar-SA', 0.7);
   });
 }
@@ -571,6 +579,7 @@ function renderSelectGrid() {
 }
 
 function openStory(story) {
+  if (duaAudioEl) duaAudioEl.pause();
   currentStory = story;
   currentQuestionIndex = 0;
   storyTitle.textContent = story.name;
@@ -611,9 +620,11 @@ function closeStory() {
   document.getElementById('story-select-grid').classList.remove('hidden');
   renderSelectGrid();
   window.speechSynthesis && window.speechSynthesis.cancel();
+  if (duaAudioEl) duaAudioEl.pause();
 }
 
 function renderQuestion() {
+  quizLocked = false;
   if (currentQuestionIndex >= currentStory.quiz.length) {
     completeQuiz();
     return;
@@ -631,7 +642,9 @@ function renderQuestion() {
 }
 
 function handleAnswer(opt, btn) {
+  if (quizLocked) return;
   if (opt.correct) {
+    quizLocked = true;
     btn.classList.add('correct-flash');
     setTimeout(() => {
       currentQuestionIndex++;
