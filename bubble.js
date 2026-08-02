@@ -48,20 +48,62 @@ let currentTarget = null;
 let score = 0;
 let spawnTimer = null;
 
-function speak(text, rate) {
+let activeSpeakBtn = null;
+let activeSpeakLabel = '';
+
+function resetActiveSpeakBtn() {
+  if (activeSpeakBtn) {
+    activeSpeakBtn.textContent = activeSpeakLabel;
+    activeSpeakBtn = null;
+  }
+}
+
+function speak(text, rate, btn) {
   if (!('speechSynthesis' in window)) return;
   const synth = window.speechSynthesis;
+  resetActiveSpeakBtn();
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'ar-SA';
   utterance.rate = rate || 0.75;
   const arabicVoice = synth.getVoices().find(v => v.lang && v.lang.startsWith('ar'));
   if (arabicVoice) utterance.voice = arabicVoice;
 
+  if (btn) {
+    activeSpeakBtn = btn;
+    activeSpeakLabel = btn.dataset.origLabel || btn.textContent;
+    btn.dataset.origLabel = activeSpeakLabel;
+    utterance.onend = () => {
+      if (activeSpeakBtn === btn) {
+        btn.textContent = activeSpeakLabel;
+        activeSpeakBtn = null;
+      }
+    };
+    btn.textContent = '⏸️ Pause';
+  }
+
   synth.cancel();
   setTimeout(() => {
     synth.resume();
     synth.speak(utterance);
   }, 40);
+}
+
+function handleSpeakClick(btn, getText, rate) {
+  if (!('speechSynthesis' in window)) return;
+  const synth = window.speechSynthesis;
+  if (activeSpeakBtn === btn && (synth.speaking || synth.paused)) {
+    if (synth.paused) {
+      synth.resume();
+      btn.textContent = '⏸️ Pause';
+    } else {
+      synth.pause();
+      btn.textContent = '▶️ Resume';
+    }
+    return;
+  }
+  const text = getText();
+  if (text) speak(text, rate, btn);
 }
 
 function launchConfetti(count) {
@@ -116,7 +158,7 @@ function pickNewTarget() {
   const letter = distinctLetters[Math.floor(Math.random() * distinctLetters.length)];
   currentTarget = LETTERS.find(l => l.letter === letter);
   targetNameEl.textContent = currentTarget.name;
-  setTimeout(() => speak(currentTarget.sound || currentTarget.letter), 150);
+  setTimeout(() => speak(currentTarget.sound || currentTarget.letter, null, replayBtn), 150);
 }
 
 function handleBubbleClick(record) {
@@ -126,7 +168,7 @@ function handleBubbleClick(record) {
     record.el.classList.add('popping');
     score++;
     scoreEl.textContent = score;
-    speak(currentTarget.sound || currentTarget.letter);
+    speak(currentTarget.sound || currentTarget.letter, null, replayBtn);
     launchConfetti(18);
     activeBubbles = activeBubbles.filter(b => b !== record);
     setTimeout(() => record.el.remove(), 300);
@@ -146,6 +188,7 @@ function startSpawning() {
 }
 
 function restart() {
+  resetActiveSpeakBtn();
   activeBubbles.forEach(b => b.el.remove());
   activeBubbles = [];
   currentTarget = null;
@@ -158,7 +201,7 @@ function restart() {
 }
 
 replayBtn.addEventListener('click', () => {
-  if (currentTarget) speak(currentTarget.sound || currentTarget.letter);
+  if (currentTarget) handleSpeakClick(replayBtn, () => currentTarget.sound || currentTarget.letter);
 });
 restartBtn.addEventListener('click', restart);
 

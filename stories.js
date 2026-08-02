@@ -499,14 +499,39 @@ function markCompleted(id) {
   }
 }
 
-function speak(text, lang, rate) {
+let activeSpeakBtn = null;
+let activeSpeakLabel = '';
+
+function resetActiveSpeakBtn() {
+  if (activeSpeakBtn) {
+    activeSpeakBtn.textContent = activeSpeakLabel;
+    activeSpeakBtn = null;
+  }
+}
+
+function speak(text, lang, rate, btn) {
   if (!('speechSynthesis' in window)) return;
   const synth = window.speechSynthesis;
+  resetActiveSpeakBtn();
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = lang;
   utterance.rate = rate || 0.85;
   const voice = synth.getVoices().find(v => v.lang && v.lang.startsWith(lang.split('-')[0]));
   if (voice) utterance.voice = voice;
+
+  if (btn) {
+    activeSpeakBtn = btn;
+    activeSpeakLabel = btn.dataset.origLabel || btn.textContent;
+    btn.dataset.origLabel = activeSpeakLabel;
+    utterance.onend = () => {
+      if (activeSpeakBtn === btn) {
+        btn.textContent = activeSpeakLabel;
+        activeSpeakBtn = null;
+      }
+    };
+    btn.textContent = '⏸️ Pause';
+  }
 
   synth.cancel();
   setTimeout(() => {
@@ -515,23 +540,56 @@ function speak(text, lang, rate) {
   }, 40);
 }
 
+function handleSpeakClick(btn, getText, lang, rate) {
+  if (!('speechSynthesis' in window)) return;
+  const synth = window.speechSynthesis;
+  if (activeSpeakBtn === btn && (synth.speaking || synth.paused)) {
+    if (synth.paused) {
+      synth.resume();
+      btn.textContent = '⏸️ Pause';
+    } else {
+      synth.pause();
+      btn.textContent = '▶️ Resume';
+    }
+    return;
+  }
+  const text = getText();
+  if (text) speak(text, lang, rate, btn);
+}
+
 let duaAudioEl = null;
+let activeDuaBtn = null;
 
 const DUA_BTN_LABEL = '🔊 Hear the dua (recited)';
 
 function playDua(dua, btn) {
   if (!dua.audio) {
-    speak(dua.arabic, 'ar-SA', 0.7);
+    handleSpeakClick(btn, () => dua.arabic, 'ar-SA', 0.7);
     return;
   }
-  if (btn.dataset.playing === 'true') return;
+
+  if (activeDuaBtn === btn && duaAudioEl) {
+    if (duaAudioEl.paused) {
+      duaAudioEl.play();
+      btn.textContent = '⏸️ Pause';
+    } else {
+      duaAudioEl.pause();
+      btn.textContent = '▶️ Resume';
+    }
+    return;
+  }
+
+  if (activeDuaBtn && activeDuaBtn !== btn) {
+    activeDuaBtn.textContent = DUA_BTN_LABEL;
+  }
+
   if (!duaAudioEl) {
     duaAudioEl = new Audio();
   }
-  btn.dataset.playing = 'true';
+  activeDuaBtn = btn;
   const reset = () => {
     btn.textContent = DUA_BTN_LABEL;
-    btn.dataset.playing = 'false';
+    if (activeDuaBtn === btn) activeDuaBtn = null;
   };
   duaAudioEl.onended = reset;
   duaAudioEl.onerror = () => {
@@ -539,7 +597,7 @@ function playDua(dua, btn) {
     speak(dua.arabic, 'ar-SA', 0.7);
   };
   duaAudioEl.src = dua.audio;
-  btn.textContent = '▶ Playing…';
+  btn.textContent = '⏸️ Pause';
   duaAudioEl.play().catch(() => {
     reset();
     speak(dua.arabic, 'ar-SA', 0.7);
@@ -580,6 +638,8 @@ function renderSelectGrid() {
 
 function openStory(story) {
   if (duaAudioEl) duaAudioEl.pause();
+  activeDuaBtn = null;
+  resetActiveSpeakBtn();
   currentStory = story;
   currentQuestionIndex = 0;
   storyTitle.textContent = story.name;
@@ -620,7 +680,9 @@ function closeStory() {
   document.getElementById('story-select-grid').classList.remove('hidden');
   renderSelectGrid();
   window.speechSynthesis && window.speechSynthesis.cancel();
+  resetActiveSpeakBtn();
   if (duaAudioEl) duaAudioEl.pause();
+  activeDuaBtn = null;
 }
 
 function renderQuestion() {
@@ -667,8 +729,7 @@ function completeQuiz() {
 
 storyListenBtn.addEventListener('click', () => {
   if (!currentStory) return;
-  const fullText = currentStory.slides.map(s => s.text).join(' ');
-  speak(fullText, 'en-US', 0.95);
+  handleSpeakClick(storyListenBtn, () => currentStory.slides.map(s => s.text).join(' '), 'en-US', 0.95);
 });
 
 backBtn.addEventListener('click', closeStory);

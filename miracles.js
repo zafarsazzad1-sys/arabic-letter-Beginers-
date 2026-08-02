@@ -86,20 +86,62 @@ function shuffleArray(arr) {
   return shuffled;
 }
 
-function speak(text, lang, rate) {
+let activeSpeakBtn = null;
+let activeSpeakLabel = '';
+
+function resetActiveSpeakBtn() {
+  if (activeSpeakBtn) {
+    activeSpeakBtn.textContent = activeSpeakLabel;
+    activeSpeakBtn = null;
+  }
+}
+
+function speak(text, lang, rate, btn) {
   if (!('speechSynthesis' in window)) return;
   const synth = window.speechSynthesis;
+  resetActiveSpeakBtn();
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = lang;
   utterance.rate = rate || 0.9;
   const voice = synth.getVoices().find(v => v.lang && v.lang.startsWith(lang.split('-')[0]));
   if (voice) utterance.voice = voice;
 
+  if (btn) {
+    activeSpeakBtn = btn;
+    activeSpeakLabel = btn.dataset.origLabel || btn.textContent;
+    btn.dataset.origLabel = activeSpeakLabel;
+    utterance.onend = () => {
+      if (activeSpeakBtn === btn) {
+        btn.textContent = activeSpeakLabel;
+        activeSpeakBtn = null;
+      }
+    };
+    btn.textContent = '⏸️ Pause';
+  }
+
   synth.cancel();
   setTimeout(() => {
     synth.resume();
     synth.speak(utterance);
   }, 40);
+}
+
+function handleSpeakClick(btn, getText, lang, rate) {
+  if (!('speechSynthesis' in window)) return;
+  const synth = window.speechSynthesis;
+  if (activeSpeakBtn === btn && (synth.speaking || synth.paused)) {
+    if (synth.paused) {
+      synth.resume();
+      btn.textContent = '⏸️ Pause';
+    } else {
+      synth.pause();
+      btn.textContent = '▶️ Resume';
+    }
+    return;
+  }
+  const text = getText();
+  if (text) speak(text, lang, rate, btn);
 }
 
 function launchConfetti() {
@@ -116,6 +158,7 @@ function launchConfetti() {
 }
 
 function startGame() {
+  resetActiveSpeakBtn();
   roundOrder = shuffleArray(MIRACLES);
   roundIndex = 0;
   score = 0;
@@ -148,7 +191,7 @@ function showRound() {
     optionsEl.appendChild(btn);
   });
 
-  setTimeout(() => speak(currentMiracle.text, 'en-US', 0.95), 200);
+  setTimeout(() => speak(currentMiracle.text, 'en-US', 0.95, replayBtn), 200);
 }
 
 function handleAnswer(opt, btn) {
@@ -177,7 +220,7 @@ function completeGame() {
   launchConfetti();
 }
 
-replayBtn.addEventListener('click', () => currentMiracle && speak(currentMiracle.text, 'en-US', 0.95));
+replayBtn.addEventListener('click', () => currentMiracle && handleSpeakClick(replayBtn, () => currentMiracle.text, 'en-US', 0.95));
 restartBtn.addEventListener('click', startGame);
 playAgainBtn.addEventListener('click', startGame);
 

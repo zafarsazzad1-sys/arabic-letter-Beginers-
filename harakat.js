@@ -142,20 +142,62 @@ function markGridMastered(letter) {
   }
 }
 
-function speak(text, rate) {
+let activeSpeakBtn = null;
+let activeSpeakLabel = '';
+
+function resetActiveSpeakBtn() {
+  if (activeSpeakBtn) {
+    activeSpeakBtn.textContent = activeSpeakLabel;
+    activeSpeakBtn = null;
+  }
+}
+
+function speak(text, rate, btn) {
   if (!('speechSynthesis' in window)) return;
   const synth = window.speechSynthesis;
+  resetActiveSpeakBtn();
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'ar-SA';
   utterance.rate = rate || 0.7;
   const arabicVoice = synth.getVoices().find(v => v.lang && v.lang.startsWith('ar'));
   if (arabicVoice) utterance.voice = arabicVoice;
 
+  if (btn) {
+    activeSpeakBtn = btn;
+    activeSpeakLabel = btn.dataset.origLabel || btn.textContent;
+    btn.dataset.origLabel = activeSpeakLabel;
+    utterance.onend = () => {
+      if (activeSpeakBtn === btn) {
+        btn.textContent = activeSpeakLabel;
+        activeSpeakBtn = null;
+      }
+    };
+    btn.textContent = '⏸️ Pause';
+  }
+
   synth.cancel();
   setTimeout(() => {
     synth.resume();
     synth.speak(utterance);
   }, 40);
+}
+
+function handleSpeakClick(btn, getText, rate) {
+  if (!('speechSynthesis' in window)) return;
+  const synth = window.speechSynthesis;
+  if (activeSpeakBtn === btn && (synth.speaking || synth.paused)) {
+    if (synth.paused) {
+      synth.resume();
+      btn.textContent = '⏸️ Pause';
+    } else {
+      synth.pause();
+      btn.textContent = '▶️ Resume';
+    }
+    return;
+  }
+  const text = getText();
+  if (text) speak(text, rate, btn);
 }
 
 function setMascot(text) {
@@ -187,7 +229,7 @@ function selectHarakah(entry, h, chipEl) {
   void stage.offsetWidth;
   stage.classList.add('pop');
   stageLabel.textContent = `${h.name} — sounds like "${entry.translit}${h.sound}"`;
-  speak(currentCombo);
+  speak(currentCombo, null, hearBtn);
 
   const progress = loadProgress();
   if (!progress[entry.letter]) progress[entry.letter] = {};
@@ -226,6 +268,7 @@ function openDetail(entry) {
 function closeDetail() {
   overlay.classList.add('hidden');
   window.speechSynthesis && window.speechSynthesis.cancel();
+  resetActiveSpeakBtn();
 }
 
 function launchConfetti() {
@@ -262,7 +305,7 @@ function startGameRound() {
     answerChipsEl.appendChild(btn);
   });
 
-  setTimeout(() => speak(letterEntry.letter + harakah.mark), 200);
+  setTimeout(() => speak(letterEntry.letter + harakah.mark, null, replayBtn), 200);
 }
 
 function handleGameGuess(h, btn) {
@@ -292,7 +335,7 @@ function handleGameGuess(h, btn) {
   } else {
     btn.classList.add('wrong-flash');
     setTimeout(() => btn.classList.remove('wrong-flash'), 400);
-    setTimeout(() => speak(gameTarget.letter.letter + gameTarget.harakah.mark), 500);
+    setTimeout(() => speak(gameTarget.letter.letter + gameTarget.harakah.mark, null, replayBtn), 500);
   }
 }
 
@@ -312,9 +355,9 @@ closeBtn.addEventListener('click', closeDetail);
 overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeDetail();
 });
-hearBtn.addEventListener('click', () => speak(currentCombo || (currentEntry && (currentEntry.sound || currentEntry.letter))));
+hearBtn.addEventListener('click', () => handleSpeakClick(hearBtn, () => currentCombo || (currentEntry && (currentEntry.sound || currentEntry.letter))));
 replayBtn.addEventListener('click', () => {
-  if (gameTarget) speak(gameTarget.letter.letter + gameTarget.harakah.mark);
+  if (gameTarget) handleSpeakClick(replayBtn, () => gameTarget.letter.letter + gameTarget.harakah.mark);
 });
 modeToggleBtn.addEventListener('click', () => setGameMode(!gameMode));
 let resetConfirmTimeout = null;

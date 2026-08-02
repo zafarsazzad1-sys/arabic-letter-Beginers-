@@ -87,7 +87,7 @@ function startGameRound() {
   }
   gameTarget = next;
   gameTargetNameEl.textContent = gameTarget.name;
-  setTimeout(() => speak(gameTarget.sound || gameTarget.letter), 200);
+  setTimeout(() => speak(gameTarget.sound || gameTarget.letter, gameReplayBtn), 200);
 }
 
 function handleGameGuess(entry, btn) {
@@ -121,20 +121,62 @@ function setGameMode(on) {
   }
 }
 
-function speak(text) {
+let activeSpeakBtn = null;
+let activeSpeakLabel = '';
+
+function resetActiveSpeakBtn() {
+  if (activeSpeakBtn) {
+    activeSpeakBtn.textContent = activeSpeakLabel;
+    activeSpeakBtn = null;
+  }
+}
+
+function speak(text, btn) {
   if (!('speechSynthesis' in window)) return;
   const synth = window.speechSynthesis;
+  resetActiveSpeakBtn();
+
   const utterance = new SpeechSynthesisUtterance(text);
   utterance.lang = 'ar-SA';
   utterance.rate = 0.75;
   const arabicVoice = synth.getVoices().find(v => v.lang && v.lang.startsWith('ar'));
   if (arabicVoice) utterance.voice = arabicVoice;
 
+  if (btn) {
+    activeSpeakBtn = btn;
+    activeSpeakLabel = btn.dataset.origLabel || btn.textContent;
+    btn.dataset.origLabel = activeSpeakLabel;
+    utterance.onend = () => {
+      if (activeSpeakBtn === btn) {
+        btn.textContent = activeSpeakLabel;
+        activeSpeakBtn = null;
+      }
+    };
+    btn.textContent = '⏸️ Pause';
+  }
+
   synth.cancel();
   setTimeout(() => {
     synth.resume();
     synth.speak(utterance);
   }, 40);
+}
+
+function handleSpeakClick(btn, getText) {
+  if (!('speechSynthesis' in window)) return;
+  const synth = window.speechSynthesis;
+  if (activeSpeakBtn === btn && (synth.speaking || synth.paused)) {
+    if (synth.paused) {
+      synth.resume();
+      btn.textContent = '⏸️ Pause';
+    } else {
+      synth.pause();
+      btn.textContent = '▶️ Resume';
+    }
+    return;
+  }
+  const text = getText();
+  if (text) speak(text, btn);
 }
 
 function drawTraceGuide() {
@@ -165,6 +207,7 @@ function openDetail(entry) {
 function closeDetail() {
   overlay.classList.add('hidden');
   window.speechSynthesis && window.speechSynthesis.cancel();
+  resetActiveSpeakBtn();
 }
 
 // --- Trace canvas drawing ---
@@ -226,12 +269,12 @@ closeBtn.addEventListener('click', closeDetail);
 overlay.addEventListener('click', (e) => {
   if (e.target === overlay) closeDetail();
 });
-hearBtn.addEventListener('click', () => speak(currentEntry.sound || currentEntry.letter));
-hearWordBtn.addEventListener('click', () => speak(currentEntry.word));
+hearBtn.addEventListener('click', () => handleSpeakClick(hearBtn, () => currentEntry.sound || currentEntry.letter));
+hearWordBtn.addEventListener('click', () => handleSpeakClick(hearWordBtn, () => currentEntry.word));
 clearTraceBtn.addEventListener('click', drawTraceGuide);
 doneTraceBtn.addEventListener('click', launchConfetti);
 modeToggleBtn.addEventListener('click', () => setGameMode(!gameMode));
-gameReplayBtn.addEventListener('click', () => gameTarget && speak(gameTarget.sound || gameTarget.letter));
+gameReplayBtn.addEventListener('click', () => gameTarget && handleSpeakClick(gameReplayBtn, () => gameTarget.sound || gameTarget.letter));
 
 if ('speechSynthesis' in window) {
   window.speechSynthesis.onvoiceschanged = () => {};
