@@ -1,5 +1,63 @@
 const STORIES = [
   {
+    id: 'adam',
+    name: 'Adam (AS)',
+    emoji: '🌍',
+    slides: [
+      { emoji: '🌍', text: 'Allah decided to create the first human, Adam (AS), from clay, to live on Earth.' },
+      { emoji: '📚', text: 'Allah taught Adam (AS) the names of many things — special knowledge that not even the angels had.' },
+      { emoji: '🙇', text: 'Allah commanded the angels to bow to Adam (AS) out of respect. All of them obeyed, except Iblis (Shaytan), who refused out of pride.' },
+      { emoji: '🌳', text: 'Allah placed Adam (AS) and his wife Hawwa in a beautiful garden, telling them they could eat anything except the fruit of one tree.' },
+      { emoji: '😈', text: 'Iblis, jealous and cast out, whispered to Adam (AS) and Hawwa, tempting them to eat from that one tree.' },
+      { emoji: '😔', text: 'Adam (AS) and Hawwa forgot Allah’s warning and ate from the tree. They immediately felt ashamed of their mistake.' },
+      {
+        emoji: '🤲',
+        text: 'Adam (AS) and Hawwa turned straight to Allah, taking full responsibility and asking for forgiveness — the very first dua of repentance in human history.',
+        dua: {
+          arabic: 'رَبَّنَا ظَلَمْنَا أَنفُسَنَا وَإِن لَّمْ تَغْفِرْ لَنَا وَتَرْحَمْنَا لَنَكُونَنَّ مِنَ الْخَاسِرِينَ',
+          english: '"Our Lord, we have wronged ourselves, and if You do not forgive us and have mercy upon us, we will surely be among the losers."',
+          reference: 'Quran 7:23 — said by Adam (AS) and Hawwa after their mistake',
+          audio: 'audio/adam-dua-7-23.mp3',
+        },
+      },
+      { emoji: '💚', text: 'Allah forgave them out of His mercy, and they were sent to live on Earth — starting the story of all humankind.' },
+    ],
+    quiz: [
+      {
+        question: 'What did Allah teach Adam (AS)?',
+        options: [
+          { emoji: '📚', label: 'The names of many things', correct: true },
+          { emoji: '🎨', label: 'How to paint', correct: false },
+          { emoji: '🏊', label: 'How to swim', correct: false },
+        ],
+      },
+      {
+        question: 'Who refused to bow to Adam (AS)?',
+        options: [
+          { emoji: '😈', label: 'Iblis (Shaytan)', correct: true },
+          { emoji: '👼', label: 'All the angels', correct: false },
+          { emoji: '🐦', label: 'The birds', correct: false },
+        ],
+      },
+      {
+        question: 'What did Adam (AS) and Hawwa do wrong?',
+        options: [
+          { emoji: '🌳', label: 'Ate from the forbidden tree', correct: true },
+          { emoji: '😴', label: 'Fell asleep too long', correct: false },
+          { emoji: '🏃', label: 'Ran away from the garden', correct: false },
+        ],
+      },
+      {
+        question: 'What did Adam (AS) do after making the mistake?',
+        options: [
+          { emoji: '🤲', label: 'Turned to Allah and asked forgiveness', correct: true },
+          { emoji: '😡', label: 'Blamed Hawwa', correct: false },
+          { emoji: '🙈', label: 'Hid from Allah', correct: false },
+        ],
+      },
+    ],
+  },
+  {
     id: 'nuh',
     name: 'Nuh (AS)',
     emoji: '🚢',
@@ -111,6 +169,64 @@ const STORIES = [
           { emoji: '🤲', label: '"Allah is sufficient for us"', correct: true },
           { emoji: '😢', label: '"Please don\'t hurt me"', correct: false },
           { emoji: '🤐', label: 'Nothing, he stayed silent', correct: false },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'yusuf',
+    name: 'Yusuf (AS)',
+    emoji: '🌟',
+    slides: [
+      { emoji: '🌟', text: 'Yusuf (AS) had a dream: eleven stars, the sun, and the moon all bowing down to him. His father Yaqub (AS) told him not to share this dream with his brothers.' },
+      { emoji: '😠', text: 'Yusuf (AS)’s brothers were jealous of him, and they threw him into a deep well, then told their father a wolf had eaten him.' },
+      { emoji: '🐫', text: 'Some travelers found Yusuf (AS) in the well and took him to Egypt, where he was sold as a servant.' },
+      { emoji: '⛓️', text: 'Later, Yusuf (AS) was unjustly put in prison, where he kindly helped other prisoners understand their dreams.' },
+      { emoji: '👑', text: 'Years later, the King of Egypt had a strange dream that no one could explain. Yusuf (AS) was remembered and gave the true meaning, warning of years of plenty followed by years of famine.' },
+      { emoji: '🏛️', text: 'The King was so impressed that he freed Yusuf (AS) and placed him in charge of Egypt’s food and resources.' },
+      { emoji: '🤝', text: 'When famine came, Yusuf (AS)’s brothers travelled to Egypt for food, not recognizing him. Yusuf (AS) forgave them, and his whole family came to live with him in Egypt.' },
+      {
+        emoji: '🙏',
+        text: 'At the peak of his success — reunited with his family, powerful and respected — Yusuf (AS) turned to Allah in gratitude and dua.',
+        dua: {
+          arabic: 'فَاطِرَ السَّمَاوَاتِ وَالْأَرْضِ أَنتَ وَلِيِّي فِي الدُّنْيَا وَالْآخِرَةِ ۖ تَوَفَّنِي مُسْلِمًا وَأَلْحِقْنِي بِالصَّالِحِينَ',
+          english: '"Creator of the heavens and earth, You are my protector in this world and the Hereafter. Cause me to die a Muslim and join me with the righteous."',
+          reference: 'Quran 12:101 — said by Yusuf (AS) at the peak of his success',
+          audio: 'audio/yusuf-dua-12-101.mp3',
+        },
+      },
+    ],
+    quiz: [
+      {
+        question: 'What did Yusuf (AS) dream about?',
+        options: [
+          { emoji: '⭐', label: 'Eleven stars, the sun, and the moon bowing to him', correct: true },
+          { emoji: '🐍', label: 'A giant snake', correct: false },
+          { emoji: '🌈', label: 'A rainbow', correct: false },
+        ],
+      },
+      {
+        question: 'What did his brothers do to him?',
+        options: [
+          { emoji: '🕳️', label: 'Threw him into a well', correct: true },
+          { emoji: '🎁', label: 'Gave him a gift', correct: false },
+          { emoji: '🏠', label: 'Sent him to school', correct: false },
+        ],
+      },
+      {
+        question: 'How did Yusuf (AS) help in prison?',
+        options: [
+          { emoji: '💭', label: 'He explained people’s dreams', correct: true },
+          { emoji: '🍞', label: 'He baked bread', correct: false },
+          { emoji: '🎵', label: 'He sang songs', correct: false },
+        ],
+      },
+      {
+        question: 'What did Yusuf (AS) do when he became powerful?',
+        options: [
+          { emoji: '🤗', label: 'Forgave his brothers and thanked Allah', correct: true },
+          { emoji: '😡', label: 'Punished his brothers', correct: false },
+          { emoji: '🏃', label: 'Ran away', correct: false },
         ],
       },
     ],
@@ -228,6 +344,63 @@ const STORIES = [
           { emoji: '🏃', label: 'They ran away', correct: false },
           { emoji: '🏚️', label: 'Their town was destroyed', correct: false },
           { emoji: '😢', label: 'Nothing changed', correct: false },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'isa',
+    name: 'Isa (AS)',
+    emoji: '🍽️',
+    slides: [
+      { emoji: '🕊️', text: 'Prophet Isa (AS) was sent by Allah to the Children of Israel, and Allah gave him amazing miracles, like healing the sick with Allah’s permission.' },
+      { emoji: '👥', text: 'Isa (AS) had a group of loyal followers who believed in him, called the Hawariyyun (his disciples).' },
+      { emoji: '🍽️', text: 'One day, his disciples asked him, "Can your Lord send down a table of food from the sky for us?"' },
+      { emoji: '🤔', text: 'Isa (AS) told them to be mindful of Allah, but they said they wanted to eat from it, feel their hearts at peace, and know for sure that Isa (AS) spoke the truth.' },
+      {
+        emoji: '🤲',
+        text: 'So Isa (AS) turned to Allah and made a dua, asking Him to send down a table of food from heaven as a special sign and celebration.',
+        dua: {
+          arabic: 'اللَّهُمَّ رَبَّنَا أَنزِلْ عَلَيْنَا مَائِدَةً مِّنَ السَّمَاءِ تَكُونُ لَنَا عِيدًا لِّأَوَّلِنَا وَآخِرِنَا وَآيَةً مِّنكَ ۖ وَارْزُقْنَا وَأَنتَ خَيْرُ الرَّازِقِينَ',
+          english: '"O Allah, our Lord, send down to us a table spread from the heaven to be for us a festival for the first of us and the last of us, and a sign from You. And provide for us, and You are the best of providers."',
+          reference: 'Quran 5:114 — said by Isa (AS) for his disciples',
+          audio: 'audio/isa-dua-5-114.mp3',
+        },
+      },
+      { emoji: '✨', text: 'Allah accepted the dua and sent down the table, but warned that anyone who still disbelieved after seeing this sign would be punished severely.' },
+      { emoji: '🙏', text: 'This story teaches us that Allah answers sincere dua, and that seeing Allah’s signs should make our faith stronger.' },
+    ],
+    quiz: [
+      {
+        question: 'What miracles did Allah give Isa (AS)?',
+        options: [
+          { emoji: '🩺', label: 'Healing the sick', correct: true },
+          { emoji: '🎨', label: 'Painting pictures', correct: false },
+          { emoji: '🏃', label: 'Running very fast', correct: false },
+        ],
+      },
+      {
+        question: 'What did the disciples ask Isa (AS) for?',
+        options: [
+          { emoji: '🍽️', label: 'A table of food from the sky', correct: true },
+          { emoji: '💰', label: 'More money', correct: false },
+          { emoji: '🏠', label: 'A bigger house', correct: false },
+        ],
+      },
+      {
+        question: 'What did Isa (AS) tell them first?',
+        options: [
+          { emoji: '🤲', label: 'To be mindful of Allah', correct: true },
+          { emoji: '😡', label: 'To stop asking questions', correct: false },
+          { emoji: '😴', label: 'To go to sleep', correct: false },
+        ],
+      },
+      {
+        question: 'What did Isa (AS) ask Allah for in his dua?',
+        options: [
+          { emoji: '🍽️', label: 'To send down a table of food as a sign', correct: true },
+          { emoji: '💰', label: 'Riches and gold', correct: false },
+          { emoji: '🏆', label: 'To become king', correct: false },
         ],
       },
     ],

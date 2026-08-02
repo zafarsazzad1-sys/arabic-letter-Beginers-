@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miracle Match — Arabic Letter Playground</title>
+<link rel="stylesheet" href="style.css?v=15">
+</head>
+<body>
+
+<nav class="level-nav">
+  <a href="index.html" class="level-pill">1️⃣ Letters</a>
+  <a href="harakat.html" class="level-pill">2️⃣ Vowel Sounds</a>
+  <a href="memory.html" class="level-pill">🧠 Memory Match</a>
+  <a href="bubble.html" class="level-pill">🎈 Bubble Pop</a>
+  <a href="connector.html" class="level-pill">🧩 Word Builder</a>
+  <a href="stories.html" class="level-pill">📖 Stories</a>
+  <a href="miracles.html" class="level-pill active">✨ Miracle Match</a>
+</nav>
+
+<header class="app-header">
+  <h1>✨ Miracle Match ✨</h1>
+  <p class="subtitle">Which prophet was given this miracle?</p>
+  <button id="restart-btn" class="mode-btn">🔀 New Round</button>
+</header>
+
+<div class="miracle-progress">Miracle <span id="round-num">1</span> of <span id="round-total">8</span> — Score: <span id="score">0</span></div>
+
+<div class="miracle-card">
+  <div class="miracle-card-emoji" id="miracle-emoji">🌍</div>
+  <div class="miracle-card-text" id="miracle-text">Allah created him from clay — without a mother or father.</div>
+  <button id="replay-btn" class="miracle-replay-btn">🔊 Hear it again</button>
+</div>
+
+<div class="miracle-heading">Which prophet is this?</div>
+<div id="miracle-options" class="miracle-options"></div>
+
+<div id="miracle-complete-banner" class="miracle-complete-banner hidden">
+  🎉 Amazing! You matched every miracle to the right prophet!
+  <br><br>
+  <button id="play-again-btn" class="mode-btn">Play Again ▶</button>
+</div>
+
+<div id="confetti-container" class="confetti-container"></div>
+
+<script src="miracles.js?v=1"></script>
+</body>
+</html>
